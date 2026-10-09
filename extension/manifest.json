@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Shopify Dark Admin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Dark mode for the Shopify admin",
   "permissions": ["storage"],
   "host_permissions": [
