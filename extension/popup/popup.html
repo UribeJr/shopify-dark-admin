@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopify Dark Admin</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 280px;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #202223;
+      background: #fff;
+    }
+
+    h1 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #202223;
+    }
+
+    .mode-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mode-option {
+      display: flex;
+      align-items: center;
+      padding: 10px 12px;
+      border: 1px solid #c9cccf;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .mode-option:hover {
+      background: #f6f6f7;
+      border-color: #8c9196;
+    }
+
+    .mode-option.active {
+      background: #f1f8ff;
+      border-color: #005bd3;
+      box-shadow: 0 0 0 1px #005bd3;
+    }
+
+    .mode-option input[type="radio"] {
+      margin: 0;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    .mode-label {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .mode-name {
+      font-weight: 500;
+      color: #202223;
+    }
+
+    .mode-description {
+      font-size: 12px;
+      color: #6d7175;
+      margin-top: 2px;
+    }
+
+    .footer {
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid #e1e3e5;
+      font-size: 12px;
+      color: #6d7175;
+      text-align: center;
+    }
+
+    .footer a {
+      color: #005bd3;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Shopify Dark Admin</h1>
+  
+  <div class="mode-options">
+    <label class="mode-option" data-mode="on">
+      <input type="radio" name="mode" value="on">
+      <span class="mode-label">
+        <span class="mode-name">On</span>
+        <span class="mode-description">Always use dark mode</span>
+      </span>
+    </label>
+
+    <label class="mode-option" data-mode="off">
+      <input type="radio" name="mode" value="off">
+      <span class="mode-label">
+        <span class="mode-name">Off</span>
+        <span class="mode-description">Always use light mode</span>
+      </span>
+    </label>
+
+    <label class="mode-option" data-mode="system">
+      <input type="radio" name="mode" value="system">
+      <span class="mode-label">
+        <span class="mode-name">System</span>
+        <span class="mode-description">Follow OS theme</span>
+      </span>
+    </label>
+  </div>
+
+  <div class="footer">
+    v1.0.0 • <a href="https://github.com/UribeJr/shopify-dark-admin" target="_blank">GitHub</a>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

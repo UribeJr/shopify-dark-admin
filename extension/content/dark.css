@@ -1,0 +1,359 @@
+/**
+ * Shopify Dark Admin - Dark Mode Stylesheet
+ * All styles scoped under html.sda-dark
+ * Based on Polaris design tokens
+ */
+
+html.sda-dark {
+  /* Background tokens */
+  --p-color-bg: #1a1a1a;
+  --p-color-bg-inverse: #f0f0f0;
+  --p-color-bg-surface: #242424;
+  --p-color-bg-surface-hover: #2e2e2e;
+  --p-color-bg-surface-active: #353535;
+  --p-color-bg-surface-selected: #2e2e2e;
+  --p-color-bg-surface-disabled: rgba(255, 255, 255, 0.05);
+  --p-color-bg-surface-secondary: #2e2e2e;
+  --p-color-bg-surface-secondary-hover: #353535;
+  --p-color-bg-surface-secondary-active: #3d3d3d;
+  --p-color-bg-surface-secondary-selected: #3d3d3d;
+  --p-color-bg-surface-tertiary: #353535;
+  --p-color-bg-surface-tertiary-hover: #3d3d3d;
+  --p-color-bg-surface-tertiary-active: #454545;
+  --p-color-bg-surface-brand: #1a2b4d;
+  --p-color-bg-surface-brand-hover: #223558;
+  --p-color-bg-surface-brand-active: #2a3f64;
+  --p-color-bg-surface-brand-selected: #2a3f64;
+  --p-color-bg-surface-info: #0d2847;
+  --p-color-bg-surface-info-hover: #123252;
+  --p-color-bg-surface-info-active: #1a3d5e;
+  --p-color-bg-surface-success: #0d2e1f;
+  --p-color-bg-surface-success-hover: #123826;
+  --p-color-bg-surface-success-active: #1a422d;
+  --p-color-bg-surface-caution: #3d3416;
+  --p-color-bg-surface-caution-hover: #4a3f1c;
+  --p-color-bg-surface-caution-active: #574a22;
+  --p-color-bg-surface-warning: #3d2a12;
+  --p-color-bg-surface-warning-hover: #4a3318;
+  --p-color-bg-surface-warning-active: #573c1e;
+  --p-color-bg-surface-critical: #3d0d15;
+  --p-color-bg-surface-critical-hover: #4a121a;
+  --p-color-bg-surface-critical-active: #571820;
+  --p-color-bg-surface-emphasis: #1a2b4d;
+  --p-color-bg-surface-emphasis-hover: #223558;
+  --p-color-bg-surface-emphasis-active: #2a3f64;
+  --p-color-bg-surface-magic: #2d1f3d;
+  --p-color-bg-surface-magic-hover: #3a2850;
+  --p-color-bg-surface-magic-active: #473163;
+  --p-color-bg-surface-inverse: #303030;
+  --p-color-bg-surface-transparent: transparent;
+
+  /* Fill tokens for buttons and smaller elements */
+  --p-color-bg-fill: #f0f0f0;
+  --p-color-bg-fill-hover: #e0e0e0;
+  --p-color-bg-fill-active: #d0d0d0;
+  --p-color-bg-fill-selected: #c0c0c0;
+  --p-color-bg-fill-disabled: rgba(255, 255, 255, 0.08);
+  --p-color-bg-fill-secondary: #3d3d3d;
+  --p-color-bg-fill-secondary-hover: #454545;
+  --p-color-bg-fill-secondary-active: #4d4d4d;
+  --p-color-bg-fill-secondary-selected: #4d4d4d;
+  --p-color-bg-fill-tertiary: #4d4d4d;
+  --p-color-bg-fill-tertiary-hover: #5a5a5a;
+  --p-color-bg-fill-tertiary-active: #666666;
+  --p-color-bg-fill-brand: #e0e0e0;
+  --p-color-bg-fill-brand-hover: #f0f0f0;
+  --p-color-bg-fill-brand-active: #f0f0f0;
+  --p-color-bg-fill-brand-selected: #e0e0e0;
+  --p-color-bg-fill-brand-disabled: rgba(255, 255, 255, 0.12);
+  --p-color-bg-fill-info: #4d88d4;
+  --p-color-bg-fill-info-hover: #5b96e0;
+  --p-color-bg-fill-info-active: #3d78c0;
+  --p-color-bg-fill-info-secondary: #1a3d5e;
+  --p-color-bg-fill-success: #36b37e;
+  --p-color-bg-fill-success-hover: #44c18a;
+  --p-color-bg-fill-success-active: #2aa56c;
+  --p-color-bg-fill-success-secondary: #1a422d;
+  --p-color-bg-fill-warning: #ff991f;
+  --p-color-bg-fill-warning-hover: #ffaa3d;
+  --p-color-bg-fill-warning-active: #e6880b;
+  --p-color-bg-fill-warning-secondary: #573c1e;
+  --p-color-bg-fill-caution: #ffcc00;
+  --p-color-bg-fill-caution-hover: #ffd633;
+  --p-color-bg-fill-caution-active: #e6b800;
+  --p-color-bg-fill-caution-secondary: #574a22;
+  --p-color-bg-fill-critical: #e63757;
+  --p-color-bg-fill-critical-hover: #ee4f6b;
+  --p-color-bg-fill-critical-active: #d12643;
+  --p-color-bg-fill-critical-selected: #d12643;
+  --p-color-bg-fill-critical-secondary: #571820;
+  --p-color-bg-fill-emphasis: #5b96e0;
+  --p-color-bg-fill-emphasis-hover: #6da4e8;
+  --p-color-bg-fill-emphasis-active: #4d88d4;
+  --p-color-bg-fill-magic: #9c7fff;
+  --p-color-bg-fill-magic-secondary: #473163;
+  --p-color-bg-fill-magic-secondary-hover: #543d76;
+  --p-color-bg-fill-magic-secondary-active: #614989;
+  --p-color-bg-fill-inverse: #303030;
+  --p-color-bg-fill-inverse-hover: #3d3d3d;
+  --p-color-bg-fill-inverse-active: #454545;
+  --p-color-bg-fill-transparent: transparent;
+  --p-color-bg-fill-transparent-hover: rgba(255, 255, 255, 0.05);
+  --p-color-bg-fill-transparent-active: rgba(255, 255, 255, 0.08);
+  --p-color-bg-fill-transparent-selected: rgba(255, 255, 255, 0.08);
+  --p-color-bg-fill-transparent-secondary: rgba(255, 255, 255, 0.03);
+  --p-color-bg-fill-transparent-secondary-hover: rgba(255, 255, 255, 0.05);
+  --p-color-bg-fill-transparent-secondary-active: rgba(255, 255, 255, 0.08);
+
+  /* Text tokens */
+  --p-color-text: #e6e6e6;
+  --p-color-text-secondary: #a3a3a3;
+  --p-color-text-disabled: #6b6b6b;
+  --p-color-text-link: #66a3ff;
+  --p-color-text-link-hover: #80b4ff;
+  --p-color-text-link-active: #4d88d4;
+  --p-color-text-primary: #e6e6e6;
+  --p-color-text-primary-hover: #f0f0f0;
+  --p-color-text-primary-active: #d6d6d6;
+  --p-color-text-brand: #66a3ff;
+  --p-color-text-brand-hover: #80b4ff;
+  --p-color-text-brand-on-bg-fill: #1a1a1a;
+  --p-color-text-info: #66a3ff;
+  --p-color-text-info-hover: #80b4ff;
+  --p-color-text-info-active: #4d88d4;
+  --p-color-text-info-secondary: #8fb8e6;
+  --p-color-text-info-on-bg-fill: #0d2847;
+  --p-color-text-success: #5dc993;
+  --p-color-text-success-hover: #71d4a3;
+  --p-color-text-success-active: #49be83;
+  --p-color-text-success-secondary: #85d9ad;
+  --p-color-text-success-on-bg-fill: #0d2e1f;
+  --p-color-text-caution: #ffdb4d;
+  --p-color-text-caution-hover: #ffe066;
+  --p-color-text-caution-active: #e6c43d;
+  --p-color-text-caution-secondary: #ffe680;
+  --p-color-text-caution-on-bg-fill: #3d3416;
+  --p-color-text-warning: #ffaa3d;
+  --p-color-text-warning-hover: #ffbb5b;
+  --p-color-text-warning-active: #ff991f;
+  --p-color-text-warning-secondary: #ffbb5b;
+  --p-color-text-warning-on-bg-fill: #3d2a12;
+  --p-color-text-critical: #ff6b85;
+  --p-color-text-critical-hover: #ff8599;
+  --p-color-text-critical-active: #ff5771;
+  --p-color-text-critical-secondary: #ff99ad;
+  --p-color-text-critical-on-bg-fill: #3d0d15;
+  --p-color-text-emphasis: #80b4ff;
+  --p-color-text-emphasis-hover: #99c4ff;
+  --p-color-text-emphasis-active: #66a3ff;
+  --p-color-text-emphasis-on-bg-fill: #1a1a1a;
+  --p-color-text-emphasis-on-bg-fill-hover: #0d0d0d;
+  --p-color-text-emphasis-on-bg-fill-active: #262626;
+  --p-color-text-magic: #b399ff;
+  --p-color-text-magic-secondary: #c4adff;
+  --p-color-text-magic-on-bg-fill: #2d1f3d;
+  --p-color-text-inverse: #303030;
+  --p-color-text-inverse-secondary: #5a5a5a;
+  --p-color-text-link-inverse: #303030;
+
+  /* Border tokens */
+  --p-color-border: #404040;
+  --p-color-border-hover: #525252;
+  --p-color-border-disabled: #2e2e2e;
+  --p-color-border-secondary: #353535;
+  --p-color-border-tertiary: #2e2e2e;
+  --p-color-border-focus: #66a3ff;
+  --p-color-border-brand: #4d88d4;
+  --p-color-border-info: #4d88d4;
+  --p-color-border-success: #36b37e;
+  --p-color-border-caution: #ffcc00;
+  --p-color-border-warning: #ff991f;
+  --p-color-border-critical: #e63757;
+  --p-color-border-critical-secondary: #571820;
+  --p-color-border-emphasis: #5b96e0;
+  --p-color-border-emphasis-hover: #6da4e8;
+  --p-color-border-emphasis-active: #4d88d4;
+  --p-color-border-magic: #9c7fff;
+  --p-color-border-magic-secondary: #614989;
+  --p-color-border-magic-secondary-hover: #754c9c;
+  --p-color-border-inverse: #525252;
+  --p-color-border-inverse-hover: #666666;
+  --p-color-border-inverse-active: #737373;
+
+  /* Icon tokens */
+  --p-color-icon: #a3a3a3;
+  --p-color-icon-hover: #c0c0c0;
+  --p-color-icon-active: #8a8a8a;
+  --p-color-icon-disabled: #6b6b6b;
+  --p-color-icon-secondary: #8a8a8a;
+  --p-color-icon-secondary-hover: #a3a3a3;
+  --p-color-icon-secondary-active: #737373;
+  --p-color-icon-brand: #66a3ff;
+  --p-color-icon-info: #66a3ff;
+  --p-color-icon-success: #5dc993;
+  --p-color-icon-caution: #ffdb4d;
+  --p-color-icon-warning: #ffaa3d;
+  --p-color-icon-critical: #ff6b85;
+  --p-color-icon-emphasis: #80b4ff;
+  --p-color-icon-emphasis-hover: #99c4ff;
+  --p-color-icon-emphasis-active: #66a3ff;
+  --p-color-icon-magic: #b399ff;
+  --p-color-icon-inverse: #525252;
+
+  /* Scrollbar tokens */
+  --p-color-scrollbar-thumb-bg: #454545;
+  --p-color-scrollbar-thumb-bg-hover: #525252;
+
+  /* Avatar tokens - just enough for reasonable defaults */
+  --p-color-avatar-bg-fill: #4d4d4d;
+  --p-color-avatar-one-bg-fill: #4d88d4;
+  --p-color-avatar-one-text-on-bg-fill: #f0f0f0;
+  --p-color-avatar-two-bg-fill: #36b37e;
+  --p-color-avatar-two-text-on-bg-fill: #0d2e1f;
+  --p-color-avatar-three-bg-fill: #ff991f;
+  --p-color-avatar-three-text-on-bg-fill: #3d2a12;
+  --p-color-avatar-four-bg-fill: #e63757;
+  --p-color-avatar-four-text-on-bg-fill: #3d0d15;
+  --p-color-avatar-five-bg-fill: #9c7fff;
+  --p-color-avatar-five-text-on-bg-fill: #2d1f3d;
+
+  /* Input tokens */
+  --p-color-input-bg-surface: #2e2e2e;
+  --p-color-input-bg-surface-hover: #353535;
+  --p-color-input-bg-surface-active: #3d3d3d;
+  --p-color-input-border: #525252;
+  --p-color-input-border-hover: #666666;
+  --p-color-input-border-active: #66a3ff;
+
+  /* Nav tokens - keep nav consistent */
+  --p-color-nav-bg: #1a1a1a;
+  --p-color-nav-bg-surface: #242424;
+
+  /* Backdrop tokens */
+  --p-color-backdrop-bg: rgba(0, 0, 0, 0.7);
+
+  /* Tooltip tokens */
+  --p-color-tooltip-tail-down-border: #303030;
+  --p-color-tooltip-tail-up-border: #303030;
+}
+
+/* Fallback overrides for hard-coded colors */
+html.sda-dark body {
+  background-color: var(--p-color-bg) !important;
+  color: var(--p-color-text) !important;
+}
+
+/* Dim illustrations but not product photos */
+html.sda-dark img[src*="shopify.com/admin"]:not([src*="product"]):not([src*="products"]),
+html.sda-dark svg:not([data-polaris-icon]) {
+  filter: brightness(0.8) contrast(1.1);
+}
+
+/* Ensure modals and popovers respect dark tokens */
+html.sda-dark [class*="Popover"],
+html.sda-dark [class*="Modal"],
+html.sda-dark [class*="Dialog"],
+html.sda-dark [class*="Toast"] {
+  background-color: var(--p-color-bg-surface);
+  color: var(--p-color-text);
+  border-color: var(--p-color-border);
+}
+
+/* Fix any white backgrounds not using tokens */
+html.sda-dark [style*="background-color: white"],
+html.sda-dark [style*="background-color: #fff"],
+html.sda-dark [style*="background-color: #ffffff"],
+html.sda-dark [style*="background: white"],
+html.sda-dark [style*="background: #fff"],
+html.sda-dark [style*="background: #ffffff"] {
+  background-color: var(--p-color-bg-surface) !important;
+}
+
+/* Fix any black text not using tokens */
+html.sda-dark [style*="color: black"],
+html.sda-dark [style*="color: #000"],
+html.sda-dark [style*="color: #000000"] {
+  color: var(--p-color-text) !important;
+}
+
+/* Fix white text that should be dark on light buttons */
+html.sda-dark [style*="color: white"]:is(button, [role="button"]),
+html.sda-dark [style*="color: #fff"]:is(button, [role="button"]),
+html.sda-dark [style*="color: #ffffff"]:is(button, [role="button"]) {
+  color: var(--p-color-text-emphasis-on-bg-fill) !important;
+}
+
+/* Ensure inputs and textareas are readable */
+html.sda-dark input,
+html.sda-dark textarea,
+html.sda-dark select {
+  background-color: var(--p-color-input-bg-surface) !important;
+  color: var(--p-color-text) !important;
+  border-color: var(--p-color-input-border) !important;
+}
+
+html.sda-dark input:focus,
+html.sda-dark textarea:focus,
+html.sda-dark select:focus {
+  border-color: var(--p-color-input-border-active) !important;
+}
+
+/* Fix tables */
+html.sda-dark table {
+  background-color: var(--p-color-bg-surface);
+  color: var(--p-color-text);
+}
+
+html.sda-dark table th,
+html.sda-dark table td {
+  border-color: var(--p-color-border-secondary);
+}
+
+html.sda-dark table tr:hover {
+  background-color: var(--p-color-bg-surface-hover);
+}
+
+/* Cards and panels */
+html.sda-dark [class*="Card"],
+html.sda-dark [class*="Panel"],
+html.sda-dark [class*="Banner"] {
+  background-color: var(--p-color-bg-surface);
+  border-color: var(--p-color-border);
+}
+
+/* Rich text editor */
+html.sda-dark [class*="RichTextEditor"],
+html.sda-dark [contenteditable="true"] {
+  background-color: var(--p-color-input-bg-surface) !important;
+  color: var(--p-color-text) !important;
+}
+
+/* Buttons */
+html.sda-dark button:not([class*="Primary"]) {
+  background-color: var(--p-color-bg-fill-secondary);
+  color: var(--p-color-text);
+  border-color: var(--p-color-border);
+}
+
+html.sda-dark button:not([class*="Primary"]):hover {
+  background-color: var(--p-color-bg-fill-secondary-hover);
+}
+
+/* Scrollbars */
+html.sda-dark ::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+html.sda-dark ::-webkit-scrollbar-track {
+  background: var(--p-color-bg);
+}
+
+html.sda-dark ::-webkit-scrollbar-thumb {
+  background: var(--p-color-scrollbar-thumb-bg);
+  border-radius: 6px;
+}
+
+html.sda-dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--p-color-scrollbar-thumb-bg-hover);
+}

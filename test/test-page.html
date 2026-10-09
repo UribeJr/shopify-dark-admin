@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polaris Test Page - Shopify Dark Admin</title>
+  <style>
+    /* Polaris-like design tokens (light theme defaults) */
+    :root {
+      --p-color-bg: rgb(241, 241, 241);
+      --p-color-bg-surface: rgb(255, 255, 255);
+      --p-color-bg-surface-hover: rgb(247, 247, 247);
+      --p-color-bg-surface-active: rgb(243, 243, 243);
+      --p-color-bg-surface-secondary: rgb(247, 247, 247);
+      --p-color-bg-surface-tertiary: rgb(243, 243, 243);
+      --p-color-bg-surface-info: rgb(234, 244, 255);
+      --p-color-bg-surface-success: rgb(205, 254, 212);
+      --p-color-bg-surface-caution: rgb(255, 248, 219);
+      --p-color-bg-surface-critical: rgb(254, 232, 235);
+      --p-color-text: rgb(48, 48, 48);
+      --p-color-text-secondary: rgb(97, 97, 97);
+      --p-color-text-disabled: rgb(181, 181, 181);
+      --p-color-text-link: rgb(0, 91, 211);
+      --p-color-text-info: rgb(0, 58, 90);
+      --p-color-text-success: rgb(4, 123, 93);
+      --p-color-text-caution: rgb(145, 106, 0);
+      --p-color-text-critical: rgb(199, 10, 36);
+      --p-color-border: rgb(227, 227, 227);
+      --p-color-border-secondary: rgb(235, 235, 235);
+      --p-color-icon: rgb(74, 74, 74);
+      --p-color-icon-secondary: rgb(138, 138, 138);
+      --p-color-bg-fill-brand: rgb(48, 48, 48);
+      --p-color-bg-fill-info: rgb(145, 208, 255);
+      --p-color-bg-fill-success: rgb(4, 123, 93);
+      --p-color-bg-fill-warning: rgb(255, 184, 0);
+      --p-color-bg-fill-critical: rgb(199, 10, 36);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: var(--p-color-bg);
+      color: var(--p-color-text);
+      padding: 24px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .header {
+      background: var(--p-color-bg-surface);
+      border: 1px solid var(--p-color-border);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--p-color-text);
+    }
+
+    .subtitle {
+      color: var(--p-color-text-secondary);
+      font-size: 14px;
+    }
+
+    .card {
+      background: var(--p-color-bg-surface);
+      border: 1px solid var(--p-color-border);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: var(--p-color-text);
+    }
+
+    .card-section {
+      margin-bottom: 20px;
+    }
+
+    .card-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--p-color-text);
+    }
+
+    .input-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 4px;
+      color: var(--p-color-text);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 8px 12px;
+      font-size: 14px;
+      border: 1px solid var(--p-color-border);
+      border-radius: 4px;
+      background: var(--p-color-bg-surface);
+      color: var(--p-color-text);
+      font-family: inherit;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: none;
+      border-color: rgb(0, 91, 211);
+      box-shadow: 0 0 0 1px rgb(0, 91, 211);
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      font-family: inherit;
+    }
+
+    .button-primary {
+      background: var(--p-color-bg-fill-brand);
+      color: white;
+    }
+
+    .button-primary:hover {
+      background: rgb(26, 26, 26);
+    }
+
+    .button-secondary {
+      background: white;
+      color: var(--p-color-text);
+      border: 1px solid var(--p-color-border);
+    }
+
+    .button-secondary:hover {
+      background: rgb(247, 247, 247);
+    }
+
+    .button-group {
+      display: flex;
+      gap: 8px;
+    }
+
+    .banner {
+      padding: 16px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      border: 1px solid;
+    }
+
+    .banner-info {
+      background: var(--p-color-bg-surface-info);
+      border-color: rgb(0, 148, 213);
+      color: var(--p-color-text-info);
+    }
+
+    .banner-success {
+      background: var(--p-color-bg-surface-success);
+      border-color: rgb(4, 123, 93);
+      color: var(--p-color-text-success);
+    }
+
+    .banner-caution {
+      background: var(--p-color-bg-surface-caution);
+      border-color: rgb(145, 106, 0);
+      color: var(--p-color-text-caution);
+    }
+
+    .banner-critical {
+      background: var(--p-color-bg-surface-critical);
+      border-color: rgb(199, 10, 36);
+      color: var(--p-color-text-critical);
+    }
+
+    .table-container {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--p-color-bg-surface);
+    }
+
+    th {
+      text-align: left;
+      padding: 12px;
+      font-weight: 600;
+      font-size: 13px;
+      border-bottom: 2px solid var(--p-color-border);
+      color: var(--p-color-text);
+    }
+
+    td {
+      padding: 12px;
+      border-bottom: 1px solid var(--p-color-border);
+      color: var(--p-color-text);
+    }
+
+    tr:hover {
+      background: var(--p-color-bg-surface-hover);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      font-size: 12px;
+      font-weight: 500;
+      border-radius: 4px;
+    }
+
+    .badge-success {
+      background: var(--p-color-bg-fill-success);
+      color: white;
+    }
+
+    .badge-warning {
+      background: var(--p-color-bg-fill-warning);
+      color: rgb(48, 48, 48);
+    }
+
+    .badge-critical {
+      background: var(--p-color-bg-fill-critical);
+      color: white;
+    }
+
+    .badge-info {
+      background: var(--p-color-bg-fill-info);
+      color: rgb(48, 48, 48);
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .link {
+      color: var(--p-color-text-link);
+      text-decoration: none;
+    }
+
+    .link:hover {
+      text-decoration: underline;
+    }
+
+    .icon {
+      color: var(--p-color-icon);
+      width: 20px;
+      height: 20px;
+    }
+
+    .test-info {
+      background: rgb(255, 253, 234);
+      border: 2px solid rgb(255, 230, 0);
+      padding: 16px;
+      border-radius: 8px;
+      margin-bottom: 24px;
+    }
+
+    .test-info strong {
+      color: rgb(145, 106, 0);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="test-info">
+      <strong>⚠️ Test Page</strong> - This is a local test page using Polaris-like tokens. Load the extension and toggle dark mode to test contrast and token mappings.
+    </div>
+
+    <div class="header">
+      <h1>Shopify Dark Admin Test</h1>
+      <p class="subtitle">Testing Polaris design token overrides</p>
+    </div>
+
+    <div class="card">
+      <h2 class="card-title">Banners</h2>
+      <div class="banner banner-info">
+        <strong>Info:</strong> This is an informational banner with important details.
+      </div>
+      <div class="banner banner-success">
+        <strong>Success:</strong> Your changes have been saved successfully!
+      </div>
+      <div class="banner banner-caution">
+        <strong>Caution:</strong> Please review the following items before proceeding.
+      </div>
+      <div class="banner banner-critical">
+        <strong>Critical:</strong> There was an error processing your request.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="card-title">Form Elements</h2>
+      <div class="card-section">
+        <div class="input-group">
+          <label for="name">Store Name</label>
+          <input type="text" id="name" placeholder="Enter store name" value="My Test Store">
+        </div>
+        <div class="input-group">
+          <label for="email">Contact Email</label>
+          <input type="email" id="email" placeholder="email@example.com" value="test@shopify.com">
+        </div>
+        <div class="input-group">
+          <label for="category">Category</label>
+          <select id="category">
+            <option>Electronics</option>
+            <option>Fashion</option>
+            <option>Home & Garden</option>
+            <option selected>Other</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="description">Description</label>
+          <textarea id="description" placeholder="Enter description">This is a test store description with some sample text to see how text areas look in dark mode.</textarea>
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="terms" checked>
+          <label for="terms">I agree to the terms and conditions</label>
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="newsletter">
+          <label for="newsletter">Subscribe to newsletter</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="card-title">Buttons</h2>
+      <div class="button-group">
+        <button class="button button-primary">Save Changes</button>
+        <button class="button button-secondary">Cancel</button>
+        <button class="button button-secondary">Preview</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="card-title">Data Table</h2>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Order</th>
+              <th>Customer</th>
+              <th>Status</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="#" class="link">#1001</a></td>
+              <td>John Smith</td>
+              <td><span class="badge badge-success">Fulfilled</span></td>
+              <td>$125.00</td>
+            </tr>
+            <tr>
+              <td><a href="#" class="link">#1002</a></td>
+              <td>Jane Doe</td>
+              <td><span class="badge badge-warning">Pending</span></td>
+              <td>$89.50</td>
+            </tr>
+            <tr>
+              <td><a href="#" class="link">#1003</a></td>
+              <td>Bob Johnson</td>
+              <td><span class="badge badge-info">Processing</span></td>
+              <td>$234.99</td>
+            </tr>
+            <tr>
+              <td><a href="#" class="link">#1004</a></td>
+              <td>Alice Williams</td>
+              <td><span class="badge badge-critical">Cancelled</span></td>
+              <td>$45.00</td>
+            </tr>
+            <tr>
+              <td><a href="#" class="link">#1005</a></td>
+              <td>Charlie Brown</td>
+              <td><span class="badge badge-success">Fulfilled</span></td>
+              <td>$178.25</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="card-title">Text Styles</h2>
+      <p style="color: var(--p-color-text);">
+        This is regular body text using the primary text color token.
+      </p>
+      <p style="color: var(--p-color-text-secondary);">
+        This is secondary text with reduced emphasis.
+      </p>
+      <p>
+        <a href="#" class="link">This is a link</a> that should be readable in both themes.
+      </p>
+      <p style="color: var(--p-color-text-disabled);">
+        This is disabled text that appears muted.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    console.log('Test page loaded. Open extension popup to toggle dark mode.');
+    console.log('Current theme class:', document.documentElement.className || 'none (light theme)');
+    
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'class') {
+          const isDark = document.documentElement.classList.contains('sda-dark');
+          console.log('Theme changed:', isDark ? 'dark' : 'light');
+        }
+      });
+    });
+    
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+  </script>
+</body>
+</html>
