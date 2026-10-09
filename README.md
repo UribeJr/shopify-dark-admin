@@ -45,6 +45,8 @@ https://github.com/user-attachments/assets/shopify-dark-admin-demo.mp4
    - Go to `https://admin.shopify.com/`
    - Click the extension icon to toggle dark mode
 
+**Note:** The extension will request additional permissions for `*.shopifyapps.com` to support embedded sections like Online Store > Themes. These are first-party Shopify domains that render in iframes within the admin.
+
 ### Chrome Web Store
 
 🚧 Coming soon! Extension will be published to the Chrome Web Store after real-admin testing.
@@ -205,7 +207,12 @@ zip -r shopify-dark-admin.zip . -x "*.DS_Store"
 This extension requires minimal permissions:
 
 - **`storage`** – To save your theme preference (syncs across devices)
-- **`host_permissions: ["https://admin.shopify.com/*"]`** – To inject the dark mode stylesheet
+- **`host_permissions`:**
+  - `https://admin.shopify.com/*` – Main Shopify admin
+  - `https://*.shopifyapps.com/*` – Embedded admin sections (Online Store, etc.)
+
+**Why `*.shopifyapps.com`?**  
+Certain admin sections like "Online Store > Themes" render in iframes from Shopify's first-party app domains (e.g., `online-store-web.shopifyapps.com`). The extension needs access to these iframes to apply dark mode consistently.
 
 **No other permissions.** No network access, no analytics, no data collection.
 

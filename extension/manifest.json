@@ -4,13 +4,21 @@
   "version": "1.0.0",
   "description": "Dark mode for the Shopify admin",
   "permissions": ["storage"],
-  "host_permissions": ["https://admin.shopify.com/*"],
+  "host_permissions": [
+    "https://admin.shopify.com/*",
+    "https://*.shopifyapps.com/*"
+  ],
   "content_scripts": [
     {
-      "matches": ["https://admin.shopify.com/*"],
+      "matches": [
+        "https://admin.shopify.com/*",
+        "https://*.shopifyapps.com/*"
+      ],
       "js": ["content/content.js"],
       "css": ["content/dark.css"],
-      "run_at": "document_start"
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true
     }
   ],
   "action": {

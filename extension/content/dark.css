@@ -2,15 +2,25 @@
  * Shopify Dark Admin - Dark Mode Stylesheet
  * Token-first approach: override CSS custom properties, let them cascade naturally
  * Based on real admin token dump (453 --p-color-* tokens)
+ * Includes legacy Polaris v9-v11 variable names for iframe compatibility
  */
 
 /* ============================================================================
    TOKEN OVERRIDES: Define dark values for all --p-color-* custom properties
-   Applied at :root level so they cascade naturally through the admin
+   Applied at multiple levels for iframe robustness:
+   - html.sda-dark (main frame)
+   - html.sda-dark body (iframe body)
+   - html.sda-dark [class*="Polaris"] (Polaris containers)
+   - body.sda-dark (iframe body directly)
    ============================================================================ */
 
 html.sda-dark:root,
-html.sda-dark {
+html.sda-dark,
+html.sda-dark body,
+html.sda-dark [class*="Polaris"],
+html.sda-dark [data-polaris-app-provider],
+body.sda-dark,
+body.sda-dark:root {
   color-scheme: dark;
 
   /* ==== BACKGROUND TOKENS ==== */
@@ -154,6 +164,56 @@ html.sda-dark {
   --p-color-backdrop-bg: rgba(0, 0, 0, 0.85) !important;
   --p-color-tooltip-tail-up-border: #383838 !important;
   --p-color-tooltip-tail-down-border: #404040 !important;
+
+  /* ==== LEGACY POLARIS v9-v11 VARIABLES (for older iframes) ==== */
+  /* Map old variable names to new dark palette */
+  
+  /* Backgrounds */
+  --p-surface: #262626 !important;
+  --p-surface-neutral: #303030 !important;
+  --p-surface-subdued: #303030 !important;
+  --p-surface-hovered: #303030 !important;
+  --p-surface-pressed: #383838 !important;
+  --p-surface-selected: #383838 !important;
+  --p-surface-disabled: rgba(255, 255, 255, 0.05) !important;
+  --p-surface-dark: #1a1a1a !important;
+  --p-surface-depressed: #1f1f1f !important;
+  --p-background: #1a1a1a !important;
+  
+  /* Text */
+  --p-text: #e3e3e3 !important;
+  --p-text-subdued: #b5b5b5 !important;
+  --p-text-disabled: #7a7a7a !important;
+  --p-text-on-dark: #e3e3e3 !important;
+  --p-text-on-primary: #1a1a1a !important;
+  
+  /* Interactive */
+  --p-interactive: #5b9dd9 !important;
+  --p-interactive-hovered: #73aee3 !important;
+  --p-interactive-disabled: #7a7a7a !important;
+  
+  /* Borders */
+  --p-border: #3a3a3a !important;
+  --p-border-neutral: #3a3a3a !important;
+  --p-border-subdued: #303030 !important;
+  --p-border-disabled: #2a2a2a !important;
+  --p-border-hovered: #4a4a4a !important;
+  --p-border-depressed: #5a5a5a !important;
+  
+  /* Icons */
+  --p-icon: #c7c7c7 !important;
+  --p-icon-subdued: #b5b5b5 !important;
+  --p-icon-disabled: #7a7a7a !important;
+  --p-icon-hovered: #dbdbdb !important;
+  --p-icon-pressed: #e8e8e8 !important;
+  
+  /* Actions */
+  --p-action-secondary: #303030 !important;
+  --p-action-secondary-hovered: #383838 !important;
+  --p-action-secondary-pressed: #404040 !important;
+  --p-action-primary: #e3e3e3 !important;
+  --p-action-primary-hovered: #f0f0f0 !important;
+  --p-action-primary-pressed: #d6d6d6 !important;
 }
 
 /* ============================================================================
