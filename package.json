@@ -1,0 +1,21 @@
+{
+  "name": "shopify-dark-admin",
+  "version": "1.0.0",
+  "description": "Dark mode for the Shopify admin (Chrome extension)",
+  "private": true,
+  "scripts": {
+    "demo": "node scripts/record-demo.js",
+    "icons": "node scripts/generate-icons.js && node scripts/create-png-icons.js"
+  },
+  "devDependencies": {
+    "playwright": "^1.49.0"
+  },
+  "keywords": [
+    "shopify",
+    "dark-mode",
+    "chrome-extension",
+    "polaris"
+  ],
+  "author": "Enrique Uribe",
+  "license": "MIT"
+}
