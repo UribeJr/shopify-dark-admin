@@ -49,24 +49,24 @@ html.sda-dark {
   --p-color-bg-surface-ai: #2d2042 !important;
   --p-color-bg-surface-magic: #2d1f3d !important;
 
-  /* Fill tokens - buttons, badges, smaller elements */
-  --p-color-bg-fill: #383838 !important;
-  --p-color-bg-fill-hover: #404040 !important;
-  --p-color-bg-fill-active: #484848 !important;
-  --p-color-bg-fill-selected: #484848 !important;
+  /* Fill tokens - buttons, badges, smaller elements - subtler values */
+  --p-color-bg-fill: #2a2a2a !important;
+  --p-color-bg-fill-hover: #303030 !important;
+  --p-color-bg-fill-active: #383838 !important;
+  --p-color-bg-fill-selected: #383838 !important;
   --p-color-bg-fill-disabled: rgba(255, 255, 255, 0.08) !important;
-  --p-color-bg-fill-secondary: #404040 !important;
-  --p-color-bg-fill-secondary-hover: #484848 !important;
-  --p-color-bg-fill-secondary-active: #505050 !important;
-  --p-color-bg-fill-tertiary: #484848 !important;
-  --p-color-bg-fill-tertiary-hover: #505050 !important;
-  --p-color-bg-fill-tertiary-active: #5a5a5a !important;
+  --p-color-bg-fill-secondary: #2e2e2e !important;
+  --p-color-bg-fill-secondary-hover: #353535 !important;
+  --p-color-bg-fill-secondary-active: #3d3d3d !important;
+  --p-color-bg-fill-tertiary: #323232 !important;
+  --p-color-bg-fill-tertiary-hover: #393939 !important;
+  --p-color-bg-fill-tertiary-active: #404040 !important;
   --p-color-bg-fill-brand: #303030 !important;
   --p-color-bg-fill-brand-hover: #383838 !important;
   --p-color-bg-fill-brand-active: #404040 !important;
-  --p-color-bg-fill-transparent: rgba(255, 255, 255, 0.06) !important;
-  --p-color-bg-fill-transparent-hover: rgba(255, 255, 255, 0.10) !important;
-  --p-color-bg-fill-transparent-active: rgba(255, 255, 255, 0.14) !important;
+  --p-color-bg-fill-transparent: rgba(255, 255, 255, 0.04) !important;
+  --p-color-bg-fill-transparent-hover: rgba(255, 255, 255, 0.08) !important;
+  --p-color-bg-fill-transparent-active: rgba(255, 255, 255, 0.12) !important;
   --p-color-bg-fill-inverse: #f0f0f0 !important;
   
   /* Semantic fills - vibrant but appropriate for dark */
@@ -82,21 +82,23 @@ html.sda-dark {
   --p-color-bg-inverse: #f0f0f0 !important;
   --p-color-bg-accent: #e3e3e3 !important;
   
-  /* Page & input backgrounds */
+  /* Page buttons */
   --p-color-page-button-bg-fill: #262626 !important;
   --p-color-page-button-bg-fill-hover: #303030 !important;
-  --p-color-input-bg-surface: #303030 !important;
-  --p-color-input-bg-surface-hover: #383838 !important;
-  --p-color-input-bg-surface-active: #303030 !important;
-  --p-color-input-bg-surface-error: #303030 !important;
-  --p-color-input-bg-surface-ai: #303030 !important;
-  --p-color-input-border: #5a5a5a !important;
-  --p-color-input-border-hover: #707070 !important;
+
+  /* Input backgrounds - darker, more subtle */
+  --p-color-input-bg-surface: #1f1f1f !important;
+  --p-color-input-bg-surface-hover: #252525 !important;
+  --p-color-input-bg-surface-active: #1f1f1f !important;
+  --p-color-input-bg-surface-error: #1f1f1f !important;
+  --p-color-input-bg-surface-ai: #1f1f1f !important;
+  --p-color-input-border: #3a3a3a !important;
+  --p-color-input-border-hover: #4a4a4a !important;
 
   /* Button tokens */
-  --p-color-button-bg-fill: #404040 !important;
-  --p-color-button-bg-fill-hover: #484848 !important;
-  --p-color-button-bg-fill-active: #505050 !important;
+  --p-color-button-bg-fill: #303030 !important;
+  --p-color-button-bg-fill-hover: #383838 !important;
+  --p-color-button-bg-fill-active: #404040 !important;
   --p-color-button-primary-bg: #e3e3e3 !important;
   --p-color-button-primary-text: #1a1a1a !important;
 
@@ -158,6 +160,28 @@ html.sda-dark {
    TARGETED FIXES: Only for elements that use hardcoded colors
    Minimal overrides - let tokens do the work
    ============================================================================ */
+
+/* Fix header gradient - override any linear-gradient backgrounds in header */
+html.sda-dark [class*="Polaris-TopBar"],
+html.sda-dark [class*="Polaris-Frame__TopBar"],
+html.sda-dark header {
+  background: var(--p-color-bg-surface) !important;
+  background-image: none !important;
+}
+
+/* Fix white circle widget (live visitors/globe) */
+html.sda-dark [class*="Polaris-Frame__ContextualSaveBar"],
+html.sda-dark [style*="background: white"],
+html.sda-dark [style*="background:white"] {
+  background: var(--p-color-bg-surface) !important;
+}
+
+/* Keep nav text native - don't let link colors leak into nav */
+html.sda-dark nav a,
+html.sda-dark [class*="Polaris-Navigation"] a,
+html.sda-dark [class*="Polaris-Navigation"] [class*="Item"] {
+  color: inherit !important;
+}
 
 /* Fix any remaining hardcoded white backgrounds */
 html.sda-dark [style*="background-color: white"],
