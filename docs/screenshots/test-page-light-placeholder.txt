@@ -1,0 +1,11 @@
+
+This is a placeholder. Real screenshots require:
+1. Chrome/Chromium with screenshot capability, OR
+2. Puppeteer: npm install puppeteer
+3. Or Playwright: npm install playwright
+
+To generate manually:
+1. Open test/test-page.html in Chrome
+2. Take full-page screenshot (Cmd+Shift+4 on Mac, F12 > Cmd+Shift+P > "Capture full size screenshot" on Chrome)
+3. Toggle dark mode in extension popup
+4. Take another full-page screenshot

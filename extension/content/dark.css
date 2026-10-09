@@ -1,0 +1,324 @@
+/**
+ * Shopify Dark Admin - Dark Mode Stylesheet
+ * Token-first approach: override CSS custom properties, let them cascade naturally
+ * Based on real admin token dump (453 --p-color-* tokens)
+ * Includes legacy Polaris v9-v11 variable names for iframe compatibility
+ */
+
+/* ============================================================================
+   TOKEN OVERRIDES: Define dark values for all --p-color-* custom properties
+   Applied at multiple levels for iframe robustness:
+   - html.sda-dark (main frame)
+   - html.sda-dark body (iframe body)
+   - html.sda-dark [class*="Polaris"] (Polaris containers)
+   - body.sda-dark (iframe body directly)
+   ============================================================================ */
+
+html.sda-dark:root,
+html.sda-dark,
+html.sda-dark body,
+html.sda-dark [class*="Polaris"],
+html.sda-dark [data-polaris-app-provider],
+body.sda-dark,
+body.sda-dark:root {
+  color-scheme: dark;
+
+  /* ==== BACKGROUND TOKENS ==== */
+  
+  /* Primary backgrounds - better separation between layers */
+  --p-color-bg: #1a1a1a !important;
+  --p-color-bg-surface: #262626 !important;
+  --p-color-bg-surface-hover: #303030 !important;
+  --p-color-bg-surface-active: #383838 !important;
+  --p-color-bg-surface-selected: #383838 !important;
+  --p-color-bg-surface-selected-hover: #404040 !important;
+  --p-color-bg-surface-disabled: rgba(255, 255, 255, 0.05) !important;
+  --p-color-bg-surface-secondary: #303030 !important;
+  --p-color-bg-surface-secondary-hover: #383838 !important;
+  --p-color-bg-surface-secondary-active: #404040 !important;
+  --p-color-bg-surface-secondary-selected: #404040 !important;
+  --p-color-bg-surface-tertiary: #383838 !important;
+  --p-color-bg-surface-tertiary-hover: #404040 !important;
+  --p-color-bg-surface-tertiary-active: #484848 !important;
+  --p-color-bg-surface-brand: #303030 !important;
+  --p-color-bg-surface-brand-hover: #383838 !important;
+  --p-color-bg-surface-brand-active: #404040 !important;
+  --p-color-bg-surface-brand-selected: #404040 !important;
+  --p-color-bg-surface-overlay: #262626 !important;
+  --p-color-bg-surface-transparent: rgba(0, 0, 0, 0) !important;
+  --p-color-bg-surface-inverse: #f0f0f0 !important;
+  
+  /* Semantic surfaces - subtle dark tints */
+  --p-color-bg-surface-emphasis: #1f2d47 !important;
+  --p-color-bg-surface-info: #1a2d42 !important;
+  --p-color-bg-surface-success: #1a2e23 !important;
+  --p-color-bg-surface-critical: #3d1a1f !important;
+  --p-color-bg-surface-warning: #3d2e1a !important;
+  --p-color-bg-surface-caution: #3a3318 !important;
+  --p-color-bg-surface-highlight: #2a2642 !important;
+  --p-color-bg-surface-ai: #2d2042 !important;
+  --p-color-bg-surface-magic: #2d1f3d !important;
+
+  /* Fill tokens - buttons, badges, smaller elements - subtler values */
+  --p-color-bg-fill: #2a2a2a !important;
+  --p-color-bg-fill-hover: #303030 !important;
+  --p-color-bg-fill-active: #383838 !important;
+  --p-color-bg-fill-selected: #383838 !important;
+  --p-color-bg-fill-disabled: rgba(255, 255, 255, 0.08) !important;
+  --p-color-bg-fill-secondary: #2e2e2e !important;
+  --p-color-bg-fill-secondary-hover: #353535 !important;
+  --p-color-bg-fill-secondary-active: #3d3d3d !important;
+  --p-color-bg-fill-tertiary: #323232 !important;
+  --p-color-bg-fill-tertiary-hover: #393939 !important;
+  --p-color-bg-fill-tertiary-active: #404040 !important;
+  --p-color-bg-fill-brand: #303030 !important;
+  --p-color-bg-fill-brand-hover: #383838 !important;
+  --p-color-bg-fill-brand-active: #404040 !important;
+  --p-color-bg-fill-transparent: rgba(255, 255, 255, 0.04) !important;
+  --p-color-bg-fill-transparent-hover: rgba(255, 255, 255, 0.08) !important;
+  --p-color-bg-fill-transparent-active: rgba(255, 255, 255, 0.12) !important;
+  --p-color-bg-fill-inverse: #f0f0f0 !important;
+  
+  /* Semantic fills - vibrant but appropriate for dark */
+  --p-color-bg-fill-info: #2563a8 !important;
+  --p-color-bg-fill-success: #2d7a4f !important;
+  --p-color-bg-fill-critical: #c42b3e !important;
+  --p-color-bg-fill-warning: #c77a2a !important;
+  --p-color-bg-fill-caution: #d4a52f !important;
+  --p-color-bg-fill-highlight: #6b5fc7 !important;
+  --p-color-bg-fill-ai: #8b5fb8 !important;
+
+  /* Special backgrounds */
+  --p-color-bg-inverse: #f0f0f0 !important;
+  --p-color-bg-accent: #e3e3e3 !important;
+  
+  /* Page buttons */
+  --p-color-page-button-bg-fill: #262626 !important;
+  --p-color-page-button-bg-fill-hover: #303030 !important;
+
+  /* Input backgrounds - darker, more subtle */
+  --p-color-input-bg-surface: #1f1f1f !important;
+  --p-color-input-bg-surface-hover: #252525 !important;
+  --p-color-input-bg-surface-active: #1f1f1f !important;
+  --p-color-input-bg-surface-error: #1f1f1f !important;
+  --p-color-input-bg-surface-ai: #1f1f1f !important;
+  --p-color-input-border: #3a3a3a !important;
+  --p-color-input-border-hover: #4a4a4a !important;
+
+  /* Button tokens */
+  --p-color-button-bg-fill: #303030 !important;
+  --p-color-button-bg-fill-hover: #383838 !important;
+  --p-color-button-bg-fill-active: #404040 !important;
+  --p-color-button-primary-bg: #e3e3e3 !important;
+  --p-color-button-primary-text: #1a1a1a !important;
+
+  /* ==== TEXT TOKENS ==== */
+  
+  /* Primary text - good contrast */
+  --p-color-text: #e3e3e3 !important;
+  --p-color-text-secondary: #b5b5b5 !important;
+  --p-color-text-tertiary: #999999 !important;
+  --p-color-text-disabled: #7a7a7a !important;
+  --p-color-text-brand: #e3e3e3 !important;
+  --p-color-text-brand-hover: #f0f0f0 !important;
+  --p-color-text-brand-on-bg-fill: #e3e3e3 !important;
+  --p-color-text-accent: #999999 !important;
+  --p-color-text-primary: #1a1a1a !important;
+  --p-color-text-inverse: #383838 !important;
+  
+  /* Links */
+  --p-color-text-link: #5b9dd9 !important;
+  --p-color-text-link-hover: #73aee3 !important;
+  
+  /* Semantic text - bright enough for dark backgrounds */
+  --p-color-text-info: #63a5d6 !important;
+  --p-color-text-success: #5fb884 !important;
+  --p-color-text-critical: #ff6b7f !important;
+  --p-color-text-warning: #f5a352 !important;
+  --p-color-text-caution: #f0c758 !important;
+  --p-color-text-highlight: #9d8ff5 !important;
+  --p-color-text-ai: #b991e3 !important;
+
+  /* ==== ICON TOKENS ==== */
+  --p-color-icon: #c7c7c7 !important;
+  --p-color-icon-hover: #dbdbdb !important;
+  --p-color-icon-active: #e8e8e8 !important;
+  --p-color-icon-secondary: #b5b5b5 !important;
+  --p-color-icon-secondary-hover: #c7c7c7 !important;
+  --p-color-icon-tertiary: #999999 !important;
+  --p-color-icon-disabled: #7a7a7a !important;
+  --p-color-icon-brand: #e3e3e3 !important;
+  --p-color-icon-accent: #999999 !important;
+
+  /* ==== BORDER TOKENS ==== */
+  --p-color-border: #3a3a3a !important;
+  --p-color-border-hover: #4a4a4a !important;
+  --p-color-border-secondary: #303030 !important;
+  --p-color-border-tertiary: #5a5a5a !important;
+  --p-color-border-disabled: #2a2a2a !important;
+  --p-color-border-brand: #4a4a4a !important;
+  --p-color-border-focus: #5b9dd9 !important;
+
+  /* ==== MISC TOKENS ==== */
+  --p-color-scrollbar-thumb-bg: #5a5a5a !important;
+  --p-color-backdrop-bg: rgba(0, 0, 0, 0.85) !important;
+  --p-color-tooltip-tail-up-border: #383838 !important;
+  --p-color-tooltip-tail-down-border: #404040 !important;
+
+  /* ==== LEGACY POLARIS v9-v11 VARIABLES (for older iframes) ==== */
+  /* Map old variable names to new dark palette */
+  
+  /* Backgrounds */
+  --p-surface: #262626 !important;
+  --p-surface-neutral: #303030 !important;
+  --p-surface-subdued: #303030 !important;
+  --p-surface-hovered: #303030 !important;
+  --p-surface-pressed: #383838 !important;
+  --p-surface-selected: #383838 !important;
+  --p-surface-disabled: rgba(255, 255, 255, 0.05) !important;
+  --p-surface-dark: #1a1a1a !important;
+  --p-surface-depressed: #1f1f1f !important;
+  --p-background: #1a1a1a !important;
+  
+  /* Text */
+  --p-text: #e3e3e3 !important;
+  --p-text-subdued: #b5b5b5 !important;
+  --p-text-disabled: #7a7a7a !important;
+  --p-text-on-dark: #e3e3e3 !important;
+  --p-text-on-primary: #1a1a1a !important;
+  
+  /* Interactive */
+  --p-interactive: #5b9dd9 !important;
+  --p-interactive-hovered: #73aee3 !important;
+  --p-interactive-disabled: #7a7a7a !important;
+  
+  /* Borders */
+  --p-border: #3a3a3a !important;
+  --p-border-neutral: #3a3a3a !important;
+  --p-border-subdued: #303030 !important;
+  --p-border-disabled: #2a2a2a !important;
+  --p-border-hovered: #4a4a4a !important;
+  --p-border-depressed: #5a5a5a !important;
+  
+  /* Icons */
+  --p-icon: #c7c7c7 !important;
+  --p-icon-subdued: #b5b5b5 !important;
+  --p-icon-disabled: #7a7a7a !important;
+  --p-icon-hovered: #dbdbdb !important;
+  --p-icon-pressed: #e8e8e8 !important;
+  
+  /* Actions */
+  --p-action-secondary: #303030 !important;
+  --p-action-secondary-hovered: #383838 !important;
+  --p-action-secondary-pressed: #404040 !important;
+  --p-action-primary: #e3e3e3 !important;
+  --p-action-primary-hovered: #f0f0f0 !important;
+  --p-action-primary-pressed: #d6d6d6 !important;
+}
+
+/* ============================================================================
+   TARGETED FIXES: Only for elements that use hardcoded colors
+   Minimal overrides - let tokens do the work
+   ============================================================================ */
+
+/* Fix header gradient - aggressive targeting for home page hero/header */
+html.sda-dark [class*="Polaris-TopBar"],
+html.sda-dark [class*="Polaris-Frame__TopBar"],
+html.sda-dark [class*="Home"],
+html.sda-dark [class*="home"],
+html.sda-dark [class*="Hero"],
+html.sda-dark [class*="header"],
+html.sda-dark header {
+  background: var(--p-color-bg-surface) !important;
+  background-image: none !important;
+}
+
+/* Target any gradient backgrounds in the top area */
+html.sda-dark [style*="linear-gradient"],
+html.sda-dark [style*="radial-gradient"] {
+  background-image: none !important;
+  background: var(--p-color-bg-surface) !important;
+}
+
+/* Fix pseudo-elements that might have gradients */
+html.sda-dark [class*="Home"]::before,
+html.sda-dark [class*="Home"]::after,
+html.sda-dark [class*="header"]::before,
+html.sda-dark [class*="header"]::after {
+  background-image: none !important;
+  background: transparent !important;
+  opacity: 0 !important;
+}
+
+/* Fix mask-image that might create gradient effect */
+html.sda-dark [style*="mask-image"],
+html.sda-dark [class*="Home"] {
+  mask-image: none !important;
+  -webkit-mask-image: none !important;
+}
+
+/* Keep metric labels readable on dark header */
+html.sda-dark [class*="Polaris-Text--headingSm"],
+html.sda-dark [class*="Polaris-Text--headingMd"] {
+  color: #b5b5b5 !important;
+}
+
+html.sda-dark [class*="Polaris-Text--headingLg"],
+html.sda-dark [class*="Polaris-Text--headingXl"] {
+  color: #e3e3e3 !important;
+}
+
+/* Fix white circle widget (live visitors/globe) - aggressive targeting */
+html.sda-dark [class*="Polaris-Frame__ContextualSaveBar"],
+html.sda-dark [style*="background: white"],
+html.sda-dark [style*="background:white"],
+html.sda-dark [style*="background-color: white"],
+html.sda-dark [style*="background-color:white"] {
+  background: var(--p-color-bg-surface) !important;
+  background-color: var(--p-color-bg-surface) !important;
+}
+
+/* Try inverting canvas/SVG for globe widget if it's in top-right area */
+html.sda-dark [class*="LiveVisitors"] canvas,
+html.sda-dark [class*="live-visitors"] canvas,
+html.sda-dark [class*="Globe"] canvas,
+html.sda-dark [class*="globe"] canvas {
+  filter: invert(1) hue-rotate(180deg) !important;
+}
+
+/* Target any white radial gradient containers */
+html.sda-dark [style*="radial-gradient("] {
+  background-image: none !important;
+  background: var(--p-color-bg-surface) !important;
+}
+
+/* Keep nav text native - don't let link colors leak into nav */
+html.sda-dark nav a,
+html.sda-dark [class*="Polaris-Navigation"] a,
+html.sda-dark [class*="Polaris-Navigation"] [class*="Item"] {
+  color: inherit !important;
+}
+
+/* Fix any remaining hardcoded white backgrounds */
+html.sda-dark [style*="background-color: rgb(255, 255, 255)"] {
+  background-color: var(--p-color-bg-surface) !important;
+}
+
+/* Fix any hardcoded black text */
+html.sda-dark [style*="color: black"],
+html.sda-dark [style*="color:#000"],
+html.sda-dark [style*="color: #000000"],
+html.sda-dark [style*="color: rgb(0, 0, 0)"],
+html.sda-dark [style*="color: rgb(16, 16, 16)"] {
+  color: var(--p-color-text) !important;
+}
+
+/* Don't filter ANY images - they look fine as-is */
+html.sda-dark img {
+  filter: none !important;
+}
+
+/* Don't filter SVGs either (except globe canvas above) */
+html.sda-dark svg {
+  filter: none !important;
+}
