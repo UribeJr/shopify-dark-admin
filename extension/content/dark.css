@@ -161,18 +161,74 @@ html.sda-dark {
    Minimal overrides - let tokens do the work
    ============================================================================ */
 
-/* Fix header gradient - override any linear-gradient backgrounds in header */
+/* Fix header gradient - aggressive targeting for home page hero/header */
 html.sda-dark [class*="Polaris-TopBar"],
 html.sda-dark [class*="Polaris-Frame__TopBar"],
+html.sda-dark [class*="Home"],
+html.sda-dark [class*="home"],
+html.sda-dark [class*="Hero"],
+html.sda-dark [class*="header"],
 html.sda-dark header {
   background: var(--p-color-bg-surface) !important;
   background-image: none !important;
 }
 
-/* Fix white circle widget (live visitors/globe) */
+/* Target any gradient backgrounds in the top area */
+html.sda-dark [style*="linear-gradient"],
+html.sda-dark [style*="radial-gradient"] {
+  background-image: none !important;
+  background: var(--p-color-bg-surface) !important;
+}
+
+/* Fix pseudo-elements that might have gradients */
+html.sda-dark [class*="Home"]::before,
+html.sda-dark [class*="Home"]::after,
+html.sda-dark [class*="header"]::before,
+html.sda-dark [class*="header"]::after {
+  background-image: none !important;
+  background: transparent !important;
+  opacity: 0 !important;
+}
+
+/* Fix mask-image that might create gradient effect */
+html.sda-dark [style*="mask-image"],
+html.sda-dark [class*="Home"] {
+  mask-image: none !important;
+  -webkit-mask-image: none !important;
+}
+
+/* Keep metric labels readable on dark header */
+html.sda-dark [class*="Polaris-Text--headingSm"],
+html.sda-dark [class*="Polaris-Text--headingMd"] {
+  color: #b5b5b5 !important;
+}
+
+html.sda-dark [class*="Polaris-Text--headingLg"],
+html.sda-dark [class*="Polaris-Text--headingXl"] {
+  color: #e3e3e3 !important;
+}
+
+/* Fix white circle widget (live visitors/globe) - aggressive targeting */
 html.sda-dark [class*="Polaris-Frame__ContextualSaveBar"],
 html.sda-dark [style*="background: white"],
-html.sda-dark [style*="background:white"] {
+html.sda-dark [style*="background:white"],
+html.sda-dark [style*="background-color: white"],
+html.sda-dark [style*="background-color:white"] {
+  background: var(--p-color-bg-surface) !important;
+  background-color: var(--p-color-bg-surface) !important;
+}
+
+/* Try inverting canvas/SVG for globe widget if it's in top-right area */
+html.sda-dark [class*="LiveVisitors"] canvas,
+html.sda-dark [class*="live-visitors"] canvas,
+html.sda-dark [class*="Globe"] canvas,
+html.sda-dark [class*="globe"] canvas {
+  filter: invert(1) hue-rotate(180deg) !important;
+}
+
+/* Target any white radial gradient containers */
+html.sda-dark [style*="radial-gradient("] {
+  background-image: none !important;
   background: var(--p-color-bg-surface) !important;
 }
 
@@ -184,9 +240,6 @@ html.sda-dark [class*="Polaris-Navigation"] [class*="Item"] {
 }
 
 /* Fix any remaining hardcoded white backgrounds */
-html.sda-dark [style*="background-color: white"],
-html.sda-dark [style*="background-color:#fff"],
-html.sda-dark [style*="background-color: #ffffff"],
 html.sda-dark [style*="background-color: rgb(255, 255, 255)"] {
   background-color: var(--p-color-bg-surface) !important;
 }
@@ -205,7 +258,7 @@ html.sda-dark img {
   filter: none !important;
 }
 
-/* Don't filter SVGs either */
+/* Don't filter SVGs either (except globe canvas above) */
 html.sda-dark svg {
   filter: none !important;
 }
