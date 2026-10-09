@@ -12,6 +12,16 @@ A Chrome extension (Manifest V3) that adds a beautiful dark mode to the Shopify 
 - 🔒 **Privacy First** – No network requests, no analytics, no data collection
 - 🎯 **Zero Flash** – Dark mode applies at `document_start` for smooth page loads
 
+## Demo Video
+
+https://github.com/user-attachments/assets/shopify-dark-admin-demo.mp4
+
+> 📹 **21-second demo** showing the complete V1 feature set: light mode → toggle to dark (On) → scroll through components → toggle to light (Off) → System mode with live OS theme switching.
+>
+> Video uses the local test page served via route interception so the real extension runs as it would on the Shopify admin.
+
+**See also:** [`docs/demo/`](docs/demo/) for screenshots and recording details.
+
 ## Installation
 
 ### Load Unpacked (For Testing)
