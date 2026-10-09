@@ -1,132 +1,120 @@
 # Shopify Dark Admin
 
-A Chrome extension (Manifest V3) that adds a beautiful dark mode to the Shopify admin (admin.shopify.com).
-
-> **⚠️ V1 Status:** This is the initial V1 release. Token mappings are based on Polaris documentation and need real-admin verification. See [Known Issues](#known-issues).
+A beautiful dark mode for the Shopify admin.
 
 ## Features
 
-- 🌙 **True Dark Mode** – Overrides Polaris design tokens for consistent dark theming
-- ⚡ **Instant Toggle** – Switch themes with no page reload required
-- 🖥️ **System Theme Support** – Automatically follows your OS dark/light preference
-- 🔒 **Privacy First** – No network requests, no analytics, no data collection
-- 🎯 **Zero Flash** – Dark mode applies at `document_start` for smooth page loads
-
-## Demo Video
-
-https://github.com/user-attachments/assets/shopify-dark-admin-demo.mp4
-
-> 📹 **21-second demo** showing the complete V1 feature set: light mode → toggle to dark (On) → scroll through components → toggle to light (Off) → System mode with live OS theme switching.
->
-> Video uses the local test page served via route interception so the real extension runs as it would on the Shopify admin.
-
-**See also:** [`docs/demo/`](docs/demo/) for screenshots and recording details.
+- 🌙 **Dark mode for the entire Shopify admin** – Comprehensive token overrides based on Shopify Polaris design system
+- ⚡ **Instant toggle** – Switch between On/Off/System modes with no page reload
+- 🖥️ **Follows your OS theme** – System mode automatically responds to macOS/Windows dark mode changes
+- 📦 **Works in embedded sections** – Includes Online Store, Themes, and other iframe-based admin pages
+- 🎯 **Keeps Shopify's native nav** – Dark mode respects Shopify's own left navigation styling
+- 🔒 **No tracking, no network requests** – Zero telemetry, completely private
+- ⚡ **Zero flash** – Dark mode applies instantly at page load with no white flash
 
 ## Installation
 
-### Load Unpacked (For Testing)
+### For Users
 
-1. **Download or clone this repository**
+1. **Download the extension**
+   - Visit the [latest release](https://github.com/UribeJr/shopify-dark-admin/releases/latest)
+   - Download `shopify-dark-admin-v1.0.1.zip`
+   - Unzip the file
+
+   **OR** clone the repository:
    ```bash
    git clone https://github.com/UribeJr/shopify-dark-admin.git
    cd shopify-dark-admin
    ```
 
-2. **Open Chrome Extensions page**
+2. **Open Chrome Extensions**
    - Navigate to `chrome://extensions/`
-   - Enable "Developer mode" (toggle in top right)
+   - Turn on **Developer mode** (toggle in top right)
 
 3. **Load the extension**
-   - Click "Load unpacked"
-   - Select the `extension` folder from this repository
-   - The extension icon should appear in your toolbar
+   - Click **Load unpacked**
+   - Select the `extension` folder
 
-4. **Visit Shopify Admin**
-   - Go to `https://admin.shopify.com/`
-   - Click the extension icon to toggle dark mode
+4. **Start using it**
+   - Pin the extension to your toolbar (optional but recommended)
+   - Visit `https://admin.shopify.com/`
+   - Click the extension icon and select **On** or **System**
 
-**Note:** The extension will request additional permissions for `*.shopifyapps.com` to support embedded sections like Online Store > Themes. These are first-party Shopify domains that render in iframes within the admin.
+### Works in other Chromium browsers
 
-### Chrome Web Store
-
-🚧 Coming soon! Extension will be published to the Chrome Web Store after real-admin testing.
+This extension also works in Edge, Brave, Arc, and other Chromium-based browsers. Follow the same steps using your browser's extensions page.
 
 ## Usage
 
-### Toggle Dark Mode
+Click the extension icon and choose:
 
-1. Click the extension icon in your Chrome toolbar
-2. Select your preferred mode:
-   - **On** – Always use dark mode
-   - **Off** – Always use light mode
-   - **System** – Follow your OS theme (default)
+- **On** – Always use dark mode
+- **Off** – Always use light mode (default Shopify)
+- **System** – Follow your operating system's theme preference
 
-### Dump Current Tokens (For Developers)
+Your preference syncs across all your Chrome browsers via `chrome.storage.sync`.
 
-To help improve token accuracy, Enrique can run the token dumper script:
+## Updating
 
-1. Open the Shopify admin in Chrome
-2. Open DevTools (F12 or Cmd+Option+I)
-3. Go to the Console tab
-4. Copy and paste the entire contents of `scripts/dump-tokens.js`
-5. Press Enter
-6. Copy the JSON output from the console
-7. [Create an issue](https://github.com/UribeJr/shopify-dark-admin/issues) with the token dump
+When a new version is released:
 
-This helps us map the actual Polaris tokens used in production.
+1. Download the new release zip or run `git pull` if you cloned the repo
+2. Replace the extension folder (or unzip the new version in the same location)
+3. Go to `chrome://extensions/`
+4. Click the **reload** icon (circular arrow) on the Shopify Dark Admin card
 
-## Screenshots
+## Permissions
 
-### Test Page (Light Mode)
-![Test Page - Light Mode](docs/screenshots/test-page-light.png)
-*Test page using Polaris-like tokens in light mode*
+This extension requires:
 
-### Test Page (Dark Mode)
-> 📸 **Dark mode screenshot pending** – Chrome headless had issues capturing the dark variant. The dark mode CSS is fully implemented and can be tested by loading the extension and toggling dark mode on the test page.
+- **`storage`** – Saves your theme preference (On/Off/System) and syncs across devices
+- **`https://admin.shopify.com/*`** – Main Shopify admin access
+- **`https://*.shopifyapps.com/*`** – First-party embedded Shopify admin pages like Online Store and Themes
 
-> **Note:** Screenshots above show a local test page. Real Shopify admin screenshots will be added after Enrique's testing.
+**Why `*.shopifyapps.com`?**  
+Some admin sections (Online Store > Themes, for example) render inside iframes from Shopify's own app domains like `online-store-web.shopifyapps.com`. The extension needs access to these iframes to apply dark mode consistently throughout the admin.
 
-## V1 Scope
+**No other permissions.** No network access, no analytics, no tracking.
 
-This V1 release covers:
+## Troubleshooting
 
-- ✅ Core admin pages: Home, Orders, Products, Customers, Discounts, Analytics, Settings
-- ✅ Data tables and lists
-- ✅ Forms and inputs
-- ✅ Modals and popovers
-- ✅ Banners and notifications
-- ✅ Left navigation consistency
-- ✅ Rich text editor support
-- ✅ System theme detection
+### Dark mode not applying
 
-### Not Yet Covered (V2)
+1. **Hard refresh the page**  
+   Press `Cmd+Shift+R` (Mac) or `Ctrl+Shift+R` (Windows/Linux)
 
-- ⏳ Embedded app iframes (third-party apps)
-- ⏳ Theme picker (OLED black, Win98 retro theme)
-- ⏳ Fine-tuning per Enrique's feedback
+2. **Check site access**  
+   Right-click the extension icon → **This can read and change site data** → Make sure it's set to **On all sites** or **On admin.shopify.com**
 
-## Known Issues
+3. **Check the extension is enabled**  
+   Go to `chrome://extensions/` and verify Shopify Dark Admin is enabled
 
-### Token Accuracy
-- 🔧 **Token mappings are based on Polaris docs** – Initial color mappings are derived from public Polaris documentation. Some tokens may not perfectly match the live admin until we receive Enrique's token dump.
+4. **Reload the extension**  
+   Go to `chrome://extensions/` and click the reload icon on the extension card
 
-### Potential Issues
-- ⚠️ **Illustrations** – Some admin illustrations may appear dim. Product photos are intentionally excluded from dimming.
-- ⚠️ **Third-party apps** – Embedded apps load in iframes from other domains. V1 doesn't inject into these iframes. V2 will add opt-in support.
-- ⚠️ **Theme editor** – The theme editor canvas is excluded in V1 as it contains storefront preview content.
-- ⚠️ **Hard-coded colors** – Some UI elements may use inline styles or hard-coded colors not using Polaris tokens. We've added fallback rules, but some may slip through.
+### Part of the page is still light
 
-### Reporting Issues
+Some pages may use hard-coded colors or non-standard Polaris tokens. If you find a light section:
 
-Found a white-on-white text issue or other problem? Please:
+1. Open DevTools (`F12` or `Cmd+Option+I`)
+2. Go to the Console tab
+3. Copy and paste the contents of [`scripts/dump-tokens.js`](scripts/dump-tokens.js)
+4. Press Enter and copy the output
+5. [Open an issue](https://github.com/UribeJr/shopify-dark-admin/issues) with:
+   - The page URL
+   - A screenshot
+   - The token dump output
 
-1. [Open an issue](https://github.com/UribeJr/shopify-dark-admin/issues/new)
-2. Include:
-   - Screenshot of the problem
-   - Page URL (e.g., admin.shopify.com/store/your-store/orders)
-   - Browser/OS version
+### Embedded iframe pages not dark
 
-## Development
+For pages like **Online Store > Themes**:
+
+1. Make sure you're using version 1.0.1 or later
+2. The extension needs `*.shopifyapps.com` permission
+3. When you load the extension for the first time, Chrome should prompt you to allow this
+4. If not, check `chrome://extensions/` → Shopify Dark Admin → **Details** → **Site access**
+
+## Developer Guide
 
 ### Project Structure
 
@@ -135,118 +123,105 @@ shopify-dark-admin/
 ├── extension/
 │   ├── manifest.json         # Extension manifest (Manifest V3)
 │   ├── content/
-│   │   ├── content.js        # Content script - applies dark mode class
-│   │   └── dark.css          # Dark mode token overrides
+│   │   ├── content.js        # Applies .sda-dark class and listens for changes
+│   │   └── dark.css          # All Polaris token overrides
 │   ├── popup/
 │   │   ├── popup.html        # Extension popup UI
-│   │   └── popup.js          # Popup logic
+│   │   ├── popup.js          # Popup logic
+│   │   └── popup.css         # Popup styles
 │   └── icons/                # Extension icons (16, 32, 48, 128px)
 ├── scripts/
-│   ├── dump-tokens.js        # Token dumper for DevTools console
-│   └── generate-icons.js     # Icon generator
+│   ├── dump-tokens.js        # DevTools script to extract Polaris tokens
+│   ├── inspect-frame.js      # DevTools script to diagnose iframe dark mode
+│   ├── inspect-top.js        # DevTools script to inspect top bar elements
+│   └── package.sh            # Builds release zip
 ├── test/
-│   └── test-page.html        # Local test page with Polaris tokens
-├── docs/
-│   └── screenshots/          # Screenshots
+│   └── test-page.html        # Local test page with Polaris-like tokens
 └── README.md
 ```
 
-### Token Mapping
+### How it works
 
-All color overrides are in `extension/content/dark.css` and scoped under `html.sda-dark`. The token structure follows Polaris conventions:
+1. **content.js** runs at `document_start` (before the page renders) in both top frame and all iframes
+2. It reads the user's preference from `chrome.storage.sync`
+3. It applies the `sda-dark` class to `html` and `body`
+4. It listens for storage changes and `prefers-color-scheme` media query changes to toggle instantly
+5. **dark.css** overrides Polaris CSS custom properties scoped under `html.sda-dark` and `body.sda-dark`
+
+### Token mapping
+
+All color overrides are in [`extension/content/dark.css`](extension/content/dark.css). Colors are scoped under `html.sda-dark` and use `!important` to win specificity battles with the admin's own token declarations.
+
+The extension maps both modern Polaris tokens (`--p-color-*`) and legacy tokens (`--p-surface`, `--p-background`, etc.) for compatibility with older iframe content.
+
+Example:
 
 ```css
-html.sda-dark {
-  --p-color-bg: #1a1a1a;               /* Page background */
-  --p-color-bg-surface: #242424;        /* Card/surface background */
-  --p-color-text: #e6e6e6;             /* Primary text */
-  --p-color-text-secondary: #a3a3a3;   /* Secondary text */
-  --p-color-border: #404040;           /* Border color */
-  /* ...and many more */
+html.sda-dark:root,
+html.sda-dark,
+html.sda-dark body {
+  --p-color-bg: #1a1a1a !important;               /* Page background */
+  --p-color-bg-surface: #262626 !important;       /* Cards */
+  --p-color-bg-surface-hover: #303030 !important; /* Raised surfaces */
+  --p-color-text: #e3e3e3 !important;             /* Primary text */
+  --p-color-text-secondary: #b5b5b5 !important;   /* Secondary text */
+  --p-color-border: #3a3a3a !important;           /* Borders */
+  /* ...and 150+ more tokens */
 }
 ```
 
-To update tokens after receiving Enrique's dump:
+### Local testing
 
-1. Paste the JSON from `dump-tokens.js` into a file
-2. Review the `tokens` object for current values
-3. Update `dark.css` with appropriate dark-mode equivalents
-4. Test on the local test page first
-5. Have Enrique test on the real admin
+1. Open `test/test-page.html` in Chrome
+2. Load the unpacked extension
+3. Toggle dark mode and verify:
+   - Text contrast meets WCAG AA
+   - All surfaces have proper layering (page → card → raised)
+   - Inputs, buttons, and interactive elements are readable
+   - No white flashes on toggle
 
-### Local Testing
+### Developer scripts
 
-1. **Open the test page**
-   ```bash
-   open test/test-page.html
-   # or just open it in Chrome
-   ```
+Run these in the browser DevTools Console (not terminal):
 
-2. **Load the extension** (see [Installation](#installation))
+- **`scripts/dump-tokens.js`** – Extracts all `--p-color-*` custom properties and computed backgrounds from the current page. Use this on the real Shopify admin to capture actual token values for mapping.
 
-3. **Toggle dark mode** using the extension popup
+- **`scripts/inspect-frame.js`** – Diagnoses dark mode in iframes. Switch DevTools context to the iframe, paste the script, and it reports whether `sda-dark` is applied and which tokens are present.
 
-4. **Check for issues**
-   - Text contrast (WCAG AA minimum)
-   - Button states (hover, active, disabled)
-   - Input focus states
-   - Table row hovers
-   - Modal backgrounds
+- **`scripts/inspect-top.js`** – Uses `document.elementsFromPoint` to inspect elements at specific page coordinates (used for diagnosing gradient/background issues on the top bar and widgets).
 
-### Building for Production
-
-The extension is plain JS/CSS, so no build step is required. To package:
+### Building a release
 
 ```bash
-cd extension
-zip -r shopify-dark-admin.zip . -x "*.DS_Store"
+./scripts/package.sh
 ```
 
-## Permissions
-
-This extension requires minimal permissions:
-
-- **`storage`** – To save your theme preference (syncs across devices)
-- **`host_permissions`:**
-  - `https://admin.shopify.com/*` – Main Shopify admin
-  - `https://*.shopifyapps.com/*` – Embedded admin sections (Online Store, etc.)
-
-**Why `*.shopifyapps.com`?**  
-Certain admin sections like "Online Store > Themes" render in iframes from Shopify's first-party app domains (e.g., `online-store-web.shopifyapps.com`). The extension needs access to these iframes to apply dark mode consistently.
-
-**No other permissions.** No network access, no analytics, no data collection.
+This reads the version from `manifest.json` and creates `dist/shopify-dark-admin-v1.0.1.zip` ready for distribution.
 
 ## Contributing
 
-Contributions welcome! Please:
+Contributions are welcome! To contribute:
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+2. Create a feature branch: `git checkout -b feature/your-feature`
+3. Make your changes
+4. Test thoroughly on the real Shopify admin
+5. Commit with a clear message: `git commit -m 'Add support for X'`
+6. Push: `git push origin feature/your-feature`
+7. Open a Pull Request
+
+Please include screenshots or screen recordings demonstrating your changes on the real admin.
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) file for details.
+MIT License. See [LICENSE](LICENSE) for details.
 
-## Credits
+## Disclaimer
 
-- **Design System:** Built on [Shopify Polaris](https://polaris.shopify.com/) design tokens
-- **Concept:** Inspired by the need for a dark mode during late-night Shopify admin work
-- **Maintainer:** Enrique Uribe ([@UribeJr](https://github.com/UribeJr))
+This extension is not affiliated with, endorsed by, or connected to Shopify Inc. It is an independent open-source project built for personal use.
 
-## Changelog
-
-### V1.0.0 (October 9, 2026)
-
-- 🎉 Initial release
-- ✅ Core dark mode token overrides
-- ✅ Instant toggle (On/Off/System)
-- ✅ Chrome Manifest V3 support
-- ✅ Zero-flash dark mode injection
-- ⚠️ Token mappings based on Polaris docs (needs real-admin verification)
+Shopify and Polaris are trademarks of Shopify Inc.
 
 ---
 
-**Made with ☕ for late-night Shopify builders**
+**Built for late-night store builders** ☕🌙
