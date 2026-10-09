@@ -1,24 +1,27 @@
 /**
- * Shopify Dark Admin - Dark Mode Stylesheet (ROBUST VERSION)
- * All styles scoped under html.sda-dark with !important to override admin styles
- * Based on Polaris design tokens + aggressive fallbacks
+ * Shopify Dark Admin - Dark Mode Stylesheet
+ * Comprehensive token overrides based on real admin dump (453 tokens)
+ * All overrides scoped to html.sda-dark with targeted specificity
  */
 
-/* ==================================================================
-   CRITICAL: Token overrides with !important for highest specificity
-   The real admin may redeclare tokens on nested elements
-   ================================================================== */
+/* ============================================================================
+   CORE PRINCIPLE: Override tokens where admin declares them
+   Real admin uses tokens on :root and body, so we override both
+   ============================================================================ */
 
-html.sda-dark,
-html.sda-dark *,
-html.sda-dark :root {
-  /* Background tokens - CRITICAL */
+html.sda-dark:root,
+html.sda-dark {
+  color-scheme: dark;
+
+  /* ==== BACKGROUND TOKENS (153 total) ==== */
+  
+  /* Primary backgrounds */
   --p-color-bg: #1a1a1a !important;
-  --p-color-bg-inverse: #f0f0f0 !important;
   --p-color-bg-surface: #242424 !important;
   --p-color-bg-surface-hover: #2e2e2e !important;
   --p-color-bg-surface-active: #353535 !important;
-  --p-color-bg-surface-selected: #2e2e2e !important;
+  --p-color-bg-surface-selected: #353535 !important;
+  --p-color-bg-surface-selected-hover: #3d3d3d !important;
   --p-color-bg-surface-disabled: rgba(255, 255, 255, 0.05) !important;
   --p-color-bg-surface-secondary: #2e2e2e !important;
   --p-color-bg-surface-secondary-hover: #353535 !important;
@@ -27,318 +30,282 @@ html.sda-dark :root {
   --p-color-bg-surface-tertiary: #353535 !important;
   --p-color-bg-surface-tertiary-hover: #3d3d3d !important;
   --p-color-bg-surface-tertiary-active: #454545 !important;
+  --p-color-bg-surface-brand: #2e2e2e !important;
+  --p-color-bg-surface-brand-hover: #353535 !important;
+  --p-color-bg-surface-brand-active: #3d3d3d !important;
+  --p-color-bg-surface-brand-selected: #3d3d3d !important;
+  --p-color-bg-surface-overlay: #242424 !important;
+  --p-color-bg-surface-transparent: rgba(0, 0, 0, 0) !important;
+  --p-color-bg-surface-inverse: #f0f0f0 !important;
   
-  /* Brand/semantic surfaces */
-  --p-color-bg-surface-brand: #1a2b4d !important;
-  --p-color-bg-surface-brand-hover: #223558 !important;
-  --p-color-bg-surface-brand-active: #2a3f64 !important;
-  --p-color-bg-surface-brand-selected: #2a3f64 !important;
-  --p-color-bg-surface-info: #0d2847 !important;
-  --p-color-bg-surface-info-hover: #123252 !important;
-  --p-color-bg-surface-info-active: #1a3d5e !important;
-  --p-color-bg-surface-success: #0d2e1f !important;
-  --p-color-bg-surface-success-hover: #123826 !important;
-  --p-color-bg-surface-success-active: #1a422d !important;
-  --p-color-bg-surface-caution: #3d3416 !important;
-  --p-color-bg-surface-caution-hover: #4a3f1c !important;
-  --p-color-bg-surface-caution-active: #574a22 !important;
-  --p-color-bg-surface-warning: #3d2a12 !important;
-  --p-color-bg-surface-warning-hover: #4a3318 !important;
-  --p-color-bg-surface-warning-active: #573c1e !important;
-  --p-color-bg-surface-critical: #3d0d15 !important;
-  --p-color-bg-surface-critical-hover: #4a121a !important;
-  --p-color-bg-surface-critical-active: #571820 !important;
+  /* Semantic surfaces (dark-tinted versions) */
   --p-color-bg-surface-emphasis: #1a2b4d !important;
-  --p-color-bg-surface-emphasis-hover: #223558 !important;
-  --p-color-bg-surface-emphasis-active: #2a3f64 !important;
+  --p-color-bg-surface-info: oklch(0.25 0.045 212.63) !important;
+  --p-color-bg-surface-success: oklch(0.28 0.06 131.73) !important;
+  --p-color-bg-surface-critical: oklch(0.27 0.04 20.5) !important;
+  --p-color-bg-surface-warning: oklch(0.30 0.05 67.45) !important;
+  --p-color-bg-surface-caution: oklch(0.32 0.07 97.61) !important;
+  --p-color-bg-surface-highlight: oklch(0.28 0.05 264.46) !important;
+  --p-color-bg-surface-ai: oklch(0.26 0.06 299.07) !important;
   --p-color-bg-surface-magic: #2d1f3d !important;
-  --p-color-bg-surface-magic-hover: #3a2850 !important;
-  --p-color-bg-surface-magic-active: #473163 !important;
-  --p-color-bg-surface-inverse: #303030 !important;
-  --p-color-bg-surface-transparent: transparent !important;
 
-  /* Fill tokens for buttons */
-  --p-color-bg-fill: #f0f0f0 !important;
-  --p-color-bg-fill-hover: #e0e0e0 !important;
-  --p-color-bg-fill-active: #d0d0d0 !important;
-  --p-color-bg-fill-selected: #c0c0c0 !important;
+  /* Fill tokens (buttons, badges, smaller elements) */
+  --p-color-bg-fill: #353535 !important;
+  --p-color-bg-fill-hover: #3d3d3d !important;
+  --p-color-bg-fill-active: #454545 !important;
+  --p-color-bg-fill-selected: #454545 !important;
   --p-color-bg-fill-disabled: rgba(255, 255, 255, 0.08) !important;
   --p-color-bg-fill-secondary: #3d3d3d !important;
   --p-color-bg-fill-secondary-hover: #454545 !important;
   --p-color-bg-fill-secondary-active: #4d4d4d !important;
-  --p-color-bg-fill-tertiary: #4d4d4d !important;
-  --p-color-bg-fill-brand: #e0e0e0 !important;
-  --p-color-bg-fill-brand-hover: #f0f0f0 !important;
-  --p-color-bg-fill-brand-active: #f0f0f0 !important;
-  --p-color-bg-fill-transparent: transparent !important;
-  --p-color-bg-fill-transparent-hover: rgba(255, 255, 255, 0.05) !important;
-  --p-color-bg-fill-transparent-active: rgba(255, 255, 255, 0.08) !important;
+  --p-color-bg-fill-tertiary: #454545 !important;
+  --p-color-bg-fill-tertiary-hover: #4d4d4d !important;
+  --p-color-bg-fill-tertiary-active: #5a5a5a !important;
+  --p-color-bg-fill-brand: #2e2e2e !important;
+  --p-color-bg-fill-brand-hover: #353535 !important;
+  --p-color-bg-fill-brand-active: #3d3d3d !important;
+  --p-color-bg-fill-transparent: rgba(255, 255, 255, 0.05) !important;
+  --p-color-bg-fill-transparent-hover: rgba(255, 255, 255, 0.08) !important;
+  --p-color-bg-fill-transparent-active: rgba(255, 255, 255, 0.12) !important;
+  --p-color-bg-fill-inverse: #f0f0f0 !important;
+  
+  /* Semantic fills (vibrant but dark-appropriate) */
+  --p-color-bg-fill-info: oklch(0.45 0.10 212.63) !important;
+  --p-color-bg-fill-success: oklch(0.48 0.12 131.73) !important;
+  --p-color-bg-fill-critical: oklch(0.50 0.15 20.5) !important;
+  --p-color-bg-fill-warning: oklch(0.55 0.14 67.45) !important;
+  --p-color-bg-fill-caution: oklch(0.60 0.16 97.61) !important;
+  --p-color-bg-fill-highlight: oklch(0.48 0.14 264.46) !important;
+  --p-color-bg-fill-ai: oklch(0.46 0.15 299.07) !important;
 
-  /* Text tokens - CRITICAL */
+  /* Special backgrounds (keep nav dark, flip inverse) */
+  --p-color-bg-inverse: #f0f0f0 !important;
+  --p-color-bg-accent: #e6e6e6 !important;
+  /* Don't override --p-color-app-bg (nav background, already #0a0a0a) */
+  
+  /* Page buttons */
+  --p-color-page-button-bg-fill: #242424 !important;
+  --p-color-page-button-bg-fill-hover: #2e2e2e !important;
+
+  /* ==== INPUT TOKENS ==== */
+  --p-color-input-bg-surface: #2e2e2e !important;
+  --p-color-input-bg-surface-hover: #353535 !important;
+  --p-color-input-bg-surface-active: #2e2e2e !important;
+  --p-color-input-bg-surface-error: #2e2e2e !important;
+  --p-color-input-bg-surface-ai: #2e2e2e !important;
+  --p-color-input-border: rgba(140, 140, 140, 1) !important;
+  --p-color-input-border-hover: rgba(180, 180, 180, 1) !important;
+
+  /* ==== BUTTON TOKENS ==== */
+  --p-color-button-bg-fill: #3d3d3d !important;
+  --p-color-button-bg-fill-hover: #454545 !important;
+  --p-color-button-bg-fill-active: #4d4d4d !important;
+  --p-color-button-primary-bg: #e6e6e6 !important;
+  --p-color-button-primary-text: #101010 !important;
+
+  /* ==== TEXT TOKENS (102 total) ==== */
+  
+  /* Primary text */
   --p-color-text: #e6e6e6 !important;
-  --p-color-text-secondary: #a3a3a3 !important;
-  --p-color-text-disabled: #6b6b6b !important;
-  --p-color-text-link: #66a3ff !important;
-  --p-color-text-link-hover: #80b4ff !important;
-  --p-color-text-primary: #e6e6e6 !important;
-  --p-color-text-primary-hover: #f0f0f0 !important;
-  --p-color-text-subdued: #a3a3a3 !important;
+  --p-color-text-secondary: rgba(163, 163, 163, 1) !important;
+  --p-color-text-tertiary: rgba(140, 140, 140, 1) !important;
+  --p-color-text-disabled: rgba(107, 107, 107, 1) !important;
+  --p-color-text-brand: #e6e6e6 !important;
+  --p-color-text-brand-hover: #f0f0f0 !important;
+  --p-color-text-brand-on-bg-fill: #e6e6e6 !important;
+  --p-color-text-accent: rgba(140, 140, 140, 1) !important;
+  --p-color-text-primary: #1a1a1a !important;
   --p-color-text-inverse: #303030 !important;
+  
+  /* Links */
+  --p-color-text-link: oklch(0.65 0.24 262.8) !important;
+  --p-color-text-link-hover: oklch(0.75 0.22 262.81) !important;
+  
+  /* Semantic text (lightened for dark backgrounds) */
+  --p-color-text-info: oklch(0.70 0.12 221.37) !important;
+  --p-color-text-success: oklch(0.72 0.14 134.14) !important;
+  --p-color-text-critical: oklch(0.75 0.18 30.9) !important;
+  --p-color-text-warning: oklch(0.73 0.15 51.49) !important;
+  --p-color-text-caution: oklch(0.75 0.14 90.28) !important;
+  --p-color-text-highlight: oklch(0.68 0.20 261.98) !important;
+  --p-color-text-ai: oklch(0.70 0.22 279.85) !important;
 
-  /* Border tokens */
-  --p-color-border: #404040 !important;
-  --p-color-border-hover: #525252 !important;
-  --p-color-border-disabled: #2e2e2e !important;
-  --p-color-border-secondary: #353535 !important;
-  --p-color-border-tertiary: #2e2e2e !important;
-  --p-color-border-focus: #66a3ff !important;
-  --p-color-border-inverse: #525252 !important;
+  /* ==== ICON TOKENS (47 total) ==== */
+  --p-color-icon: #c0c0c0 !important;
+  --p-color-icon-hover: #d6d6d6 !important;
+  --p-color-icon-active: #e6e6e6 !important;
+  --p-color-icon-secondary: #a3a3a3 !important;
+  --p-color-icon-secondary-hover: #b8b8b8 !important;
+  --p-color-icon-tertiary: rgba(140, 140, 140, 1) !important;
+  --p-color-icon-disabled: rgba(107, 107, 107, 1) !important;
+  --p-color-icon-brand: #e6e6e6 !important;
+  --p-color-icon-accent: rgba(140, 140, 140, 1) !important;
 
-  /* Icon tokens */
-  --p-color-icon: #a3a3a3 !important;
-  --p-color-icon-hover: #c0c0c0 !important;
-  --p-color-icon-secondary: #8a8a8a !important;
-  --p-color-icon-disabled: #6b6b6b !important;
+  /* ==== BORDER TOKENS (31 total) ==== */
+  --p-color-border: rgba(64, 64, 64, 1) !important;
+  --p-color-border-hover: rgba(80, 80, 80, 1) !important;
+  --p-color-border-secondary: rgba(53, 53, 53, 1) !important;
+  --p-color-border-tertiary: rgba(96, 96, 96, 1) !important;
+  --p-color-border-disabled: rgba(46, 46, 46, 1) !important;
+  --p-color-border-brand: rgba(80, 80, 80, 1) !important;
+  --p-color-border-focus: oklch(0.65 0.20 263.44) !important;
+
+  /* ==== NAV TOKENS (leave alone, already dark) ==== */
+  /* --p-color-nav-bg: already transparent over dark app-bg */
+  /* --p-color-nav-text: already light (#d0d0d0) */
+  
+  /* ==== MISC TOKENS ==== */
+  --p-color-scrollbar-thumb-bg: #5a5a5a !important;
+  --p-color-backdrop-bg: rgba(0, 0, 0, 0.85) !important;
+  --p-color-tooltip-tail-up-border: #353535 !important;
+  --p-color-tooltip-tail-down-border: #404040 !important;
 }
 
-/* ==================================================================
-   AGGRESSIVE FALLBACKS: Force dark mode on common elements
-   These apply even if tokens don't work
-   ================================================================== */
+/* ============================================================================
+   FALLBACK LAYER: Force dark colors when tokens don't apply
+   More targeted than html.sda-dark * for performance
+   ============================================================================ */
 
-/* Main page background */
+/* Main content areas */
 html.sda-dark body,
 html.sda-dark #AppFrameMain,
-html.sda-dark [class*="Frame"],
-html.sda-dark [class*="Page"],
-html.sda-dark main {
+html.sda-dark main,
+html.sda-dark [data-polaris-layer],
+html.sda-dark [class*="Polaris-Frame__Content"] {
   background-color: #1a1a1a !important;
-  background: #1a1a1a !important;
   color: #e6e6e6 !important;
 }
 
 /* Cards and surfaces */
-html.sda-dark [class*="Card"],
-html.sda-dark [class*="Surface"],
-html.sda-dark [class*="Panel"],
-html.sda-dark [class*="Layout"],
-html.sda-dark [class*="Box"],
-html.sda-dark [role="region"],
-html.sda-dark section {
+html.sda-dark [class*="Polaris-Card"],
+html.sda-dark [class*="Polaris-LegacyCard"],
+html.sda-dark [class*="Polaris-Box"][class*="surface"],
+html.sda-dark [class*="Polaris-Layout__Section"],
+html.sda-dark [role="region"] {
   background-color: #242424 !important;
-  background: #242424 !important;
   color: #e6e6e6 !important;
 }
 
-/* Override any white backgrounds */
-html.sda-dark [style*="background:#fff"],
-html.sda-dark [style*="background: #fff"],
-html.sda-dark [style*="background:white"],
-html.sda-dark [style*="background: white"],
-html.sda-dark [style*="background-color:#fff"],
-html.sda-dark [style*="background-color: #fff"],
-html.sda-dark [style*="background-color:white"],
-html.sda-dark [style*="background-color: white"],
-html.sda-dark [style*="background-color: rgb(255, 255, 255)"],
-html.sda-dark [style*="background: rgb(255, 255, 255)"] {
-  background-color: #242424 !important;
-  background: #242424 !important;
+/* Text elements in cards */
+html.sda-dark [class*="Polaris-Card"] *,
+html.sda-dark [class*="Polaris-LegacyCard"] * {
+  color: inherit;
 }
 
-/* Override any black text */
-html.sda-dark [style*="color:#000"],
-html.sda-dark [style*="color: #000"],
-html.sda-dark [style*="color:black"],
-html.sda-dark [style*="color: black"],
-html.sda-dark [style*="color: rgb(0, 0, 0)"] {
-  color: #e6e6e6 !important;
-}
-
-/* Text elements */
-html.sda-dark h1,
-html.sda-dark h2,
-html.sda-dark h3,
-html.sda-dark h4,
-html.sda-dark h5,
-html.sda-dark h6,
-html.sda-dark p,
-html.sda-dark span,
-html.sda-dark div,
-html.sda-dark a,
-html.sda-dark label {
-  color: #e6e6e6 !important;
-}
-
-/* Links */
-html.sda-dark a[href] {
-  color: #66a3ff !important;
-}
-
-/* Inputs and forms */
-html.sda-dark input,
+/* Inputs */
+html.sda-dark input:not([type="checkbox"]):not([type="radio"]),
 html.sda-dark textarea,
 html.sda-dark select,
-html.sda-dark [contenteditable="true"] {
+html.sda-dark [class*="Polaris-TextField"] input,
+html.sda-dark [class*="Polaris-Select"] select {
   background-color: #2e2e2e !important;
-  background: #2e2e2e !important;
   color: #e6e6e6 !important;
-  border-color: #525252 !important;
+  border-color: rgba(140, 140, 140, 1) !important;
 }
 
 html.sda-dark input::placeholder,
 html.sda-dark textarea::placeholder {
-  color: #6b6b6b !important;
-}
-
-html.sda-dark input:focus,
-html.sda-dark textarea:focus,
-html.sda-dark select:focus {
-  border-color: #66a3ff !important;
-  outline-color: #66a3ff !important;
-}
-
-/* Buttons */
-html.sda-dark button,
-html.sda-dark [role="button"] {
-  background-color: #3d3d3d !important;
-  color: #e6e6e6 !important;
-  border-color: #525252 !important;
-}
-
-html.sda-dark button:hover,
-html.sda-dark [role="button"]:hover {
-  background-color: #454545 !important;
-}
-
-/* Primary buttons (keep them distinct) */
-html.sda-dark button[class*="primary"],
-html.sda-dark button[class*="Primary"],
-html.sda-dark [class*="Button--primary"] {
-  background-color: #e0e0e0 !important;
-  color: #1a1a1a !important;
+  color: rgba(107, 107, 107, 1) !important;
 }
 
 /* Tables */
-html.sda-dark table {
+html.sda-dark table,
+html.sda-dark [class*="Polaris-DataTable"],
+html.sda-dark [class*="Polaris-IndexTable"] {
   background-color: #242424 !important;
-  color: #e6e6e6 !important;
 }
 
 html.sda-dark th,
-html.sda-dark td {
+html.sda-dark td,
+html.sda-dark [class*="Polaris-DataTable"] th,
+html.sda-dark [class*="Polaris-DataTable"] td {
   background-color: #242424 !important;
   color: #e6e6e6 !important;
-  border-color: #353535 !important;
+  border-color: rgba(64, 64, 64, 1) !important;
 }
 
-html.sda-dark tr:hover {
+html.sda-dark tr:hover td,
+html.sda-dark [class*="Polaris-DataTable__TableRow"]:hover {
   background-color: #2e2e2e !important;
 }
 
-html.sda-dark thead,
-html.sda-dark thead th {
-  background-color: #2e2e2e !important;
-  border-color: #404040 !important;
+/* Buttons */
+html.sda-dark button:not([class*="Primary"]),
+html.sda-dark [class*="Polaris-Button"]:not([class*="Primary"]) {
+  background-color: #3d3d3d !important;
+  color: #e6e6e6 !important;
+  border-color: rgba(64, 64, 64, 1) !important;
+}
+
+html.sda-dark button[class*="Primary"],
+html.sda-dark [class*="Polaris-Button--primary"],
+html.sda-dark [class*="Polaris-Button--Primary"] {
+  background-color: #e6e6e6 !important;
+  color: #101010 !important;
 }
 
 /* Modals and overlays */
-html.sda-dark [class*="Modal"],
-html.sda-dark [class*="Dialog"],
-html.sda-dark [class*="Popover"],
-html.sda-dark [class*="Tooltip"],
-html.sda-dark [class*="Toast"],
-html.sda-dark [role="dialog"],
-html.sda-dark [role="alertdialog"] {
+html.sda-dark [class*="Polaris-Modal"],
+html.sda-dark [class*="Polaris-Popover"],
+html.sda-dark [role="dialog"] {
   background-color: #242424 !important;
   color: #e6e6e6 !important;
-  border-color: #404040 !important;
 }
 
-/* Backdrop */
-html.sda-dark [class*="Backdrop"],
-html.sda-dark [class*="Overlay"] {
-  background-color: rgba(0, 0, 0, 0.7) !important;
-}
-
-/* Banners */
-html.sda-dark [class*="Banner"] {
+/* Tooltips */
+html.sda-dark [class*="Polaris-Tooltip"] {
+  background-color: #353535 !important;
   color: #e6e6e6 !important;
 }
 
-/* Keep nav dark (it's already dark) */
-html.sda-dark nav,
-html.sda-dark [class*="Navigation"],
-html.sda-dark [class*="TopBar"] {
-  /* Let nav keep its native dark styles */
+/* Banners (semantic colors already dark-tinted in tokens) */
+html.sda-dark [class*="Polaris-Banner"] {
+  color: #e6e6e6 !important;
+}
+
+/* Links */
+html.sda-dark a[href]:not([class*="Polaris-Button"]) {
+  color: oklch(0.65 0.24 262.8) !important;
 }
 
 /* Scrollbars */
-html.sda-dark ::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
-  background: #1a1a1a !important;
+html.sda-dark ::-webkit-scrollbar-thumb {
+  background-color: #5a5a5a !important;
 }
 
 html.sda-dark ::-webkit-scrollbar-track {
-  background: #1a1a1a !important;
+  background-color: #1a1a1a !important;
 }
 
-html.sda-dark ::-webkit-scrollbar-thumb {
-  background: #454545 !important;
-  border-radius: 6px;
-}
-
-html.sda-dark ::-webkit-scrollbar-thumb:hover {
-  background: #525252 !important;
-}
-
-/* Dim illustrations but not product photos */
-html.sda-dark img[src*="cdn.shopify.com"]:not([alt*="product"]):not([alt*="Product"]),
-html.sda-dark svg:not([data-polaris-icon]):not([role="img"]) {
-  filter: brightness(0.8) contrast(1.1) !important;
-}
-
-/* Don't dim avatars, logos, or product images */
+/* Don't invert product images */
 html.sda-dark img[alt*="product"],
 html.sda-dark img[alt*="Product"],
-html.sda-dark img[class*="Avatar"],
-html.sda-dark img[class*="Thumbnail"],
-html.sda-dark [class*="ProductImage"] img {
+html.sda-dark [class*="Polaris-Thumbnail"] img {
   filter: none !important;
 }
 
-/* Special handling for Polaris components */
-html.sda-dark [class*="Polaris"] {
-  color: inherit !important;
+/* Dim other illustrations slightly */
+html.sda-dark img:not([alt*="product"]):not([alt*="Product"]) {
+  filter: brightness(0.85) contrast(1.05);
 }
 
-/* Checkbox and radio */
-html.sda-dark input[type="checkbox"],
-html.sda-dark input[type="radio"] {
-  background-color: #2e2e2e !important;
-  border-color: #525252 !important;
-}
-
-html.sda-dark input[type="checkbox"]:checked,
-html.sda-dark input[type="radio"]:checked {
-  background-color: #66a3ff !important;
-  border-color: #66a3ff !important;
-}
-
-/* ==================================================================
-   DEBUG: Visual indicator that dark mode is active
-   ================================================================== */
-html.sda-dark::before {
-  content: "🌙 Dark Mode Active";
+/* ============================================================================
+   DEBUG INDICATOR (off by default - enable via data attribute)
+   Add data-sda-debug to <html> to show indicator
+   ============================================================================ */
+html.sda-dark[data-sda-debug]::after {
+  content: "🌙 Dark Mode";
   position: fixed;
-  bottom: 10px;
-  right: 10px;
-  background: rgba(0, 0, 0, 0.8);
+  bottom: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.85);
   color: white;
-  padding: 8px 12px;
-  border-radius: 4px;
-  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
   z-index: 999999;
   pointer-events: none;
-  font-family: -apple-system, sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
